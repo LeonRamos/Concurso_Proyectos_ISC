@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XVIII Concurso de Proyectos de Innovación - TSJ Zapopan</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{
+      --tsj-purple: #4b2c8a;
+      --accent: #f6a623;
+    }
+    body{font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
+    /* Header / Hero */
+    header.hero{
+      background-image: url('/Concurso_2025_1.JPG');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      position: relative;
+      min-height: 420px;
+    }
+    header .overlay{
+      position:absolute;inset:0;background:linear-gradient(180deg, rgba(75,44,138,0.72), rgba(20,20,40,0.5));
+    }
+    header .hero-content{position:relative;z-index:2;padding:6rem 1rem 4rem}
+    nav .nav-link{color: white !important}
+    /* Welcome section */
+    #welcome{background-image: url('/Hexagon.svg'); background-size:cover;background-position:center;color:white;padding:7rem 1rem}
+    #welcome .backdrop{background: rgba(0,0,0,0.45); padding:3rem; border-radius:10px}
+    /* Program cards */
+    .program-card{min-height:220px}
+    .speaker-card img{height:220px;object-fit:cover}
+    /* Sponsors carousel */
+    .sponsor-logo{height:80px;object-fit:contain;padding:1rem}
+    /* Solid CTA section */
+    #cta-solid{background:var(--tsj-purple);color:white;padding:3rem 1rem;text-align:center}
+    #cta-solid h1{font-weight:700}
+    /* Gallery grid */
+    .gallery-grid img{width:100%;height:160px;object-fit:cover}
+    footer{background:#1b1b1b;color:#ddd;padding:2rem 1rem}
+    footer a{color:#fff}
+    /* Make nav UL/LI style as requested */
+    .custom-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem}
+    .custom-nav li{display:inline}
+    @media(min-width:992px){
+      header.hero{min-height:520px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with navigation -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark container py-3">
+      <a class="navbar-brand d-flex align-items-center" href="#inicio">
+        <img src="data:image/png;base64,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" alt="logo" width="48" height="48" class="me-2">
+        <div>
+          <div style="font-size:14px;opacity:.9">Tecnológico Superior de Jalisco Zapopan</div>
+          <strong style="font-size:18px">Concurso de Proyectos de Innovación</strong>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <div class="ms-auto custom-nav">
+          <!-- UL and LI as required -->
+          <ul>
+            <li class="d-inline"><a class="nav-link" href="#inicio">Inicio</a></li>
+            <li class="d-inline"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+            <li class="d-inline"><a class="nav-link" href="#galeria">Galería</a></li>
+            <li class="d-inline"><a class="nav-link" href="#ediciones">Ediciones anteriores</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container hero-content text-white">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h1 class="display-4">XVIII Concurso de Proyectos de Innovación </h1>
+          <p class="lead">“La innovación distingue a un líder de un seguidor.” — Steve Jobs. </p>
+          <a href="#proyectos" class="btn btn-warning btn-lg">Ver programa</a>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block text-end">
+          <!-- space for an image or award badge -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="mt-5">
+
+    <!-- Welcome section -->
+    <section id="welcome" class="container mb-5">
+      <div class="backdrop">
+        <h1>Bienvenida</h1>
+        <p>¡Sean todas y todos bienvenidos a la <strong>XVIII edición del Concurso de Innovación de Proyectos</strong> del Tecnológico Superior de Jalisco Zapopan!</p> <p>Este evento es una celebración semestral que convoca a <strong>alumnos, docentes y empresas</strong> para reconocer el talento y la creatividad en el desarrollo de proyectos realizados por estudiantes durante el semestre. El concurso destaca la capacidad de nuestros alumnos para aplicar sus conocimientos y competencias en la resolución de <em>problemáticas reales</em> presentes en sus comunidades locales.</p> <p>La feria de proyectos ofrece un espacio de encuentro y aprendizaje, donde los participantes presentan soluciones innovadoras, comparten experiencias, y reciben retroalimentación directa de especialistas, docentes y representantes del sector productivo. Las empresas participantes tienen la oportunidad de conocer ideas emergentes, vincularse con nuevos talentos y apoyar la formación profesional de nuestros estudiantes.</p> <p>Queremos promover el espíritu de colaboración, el compromiso social y la búsqueda constante de la excelencia. Te invitamos a sumarte y ser partícipe de esta jornada, explorar los proyectos presentados y descubrir los beneficios que genera la participación conjunta en este inspirador evento académico y tecnológico.</p> <p>¡Gracias por ser parte de esta edición dedicada a fortalecer la innovación, el aprendizaje y la vinculación universitaria!</p>
+      </div>
+    </section>
+
+    <!-- Program section -->
+    <section id="proyectos" class="container mb-5">
+      <h2 class="mb-4">Programa</h2>
+      <div class="row gy-4">
+        <div class="col-md-6">
+          <div class="card program-card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Mañana - Sala A</h5>
+              <div class="row">
+                <div class="col-4"><strong>09:00</strong></div>
+                <div class="col-8">Inauguración</div>
+                <div class="col-4"><strong>09:15</strong></div>
+                <div class="col-8">Exposición de proyectos T/M</div>
+                <div class="col-4"><strong>10:30</strong></div>
+                <div class="col-8">Coffee Break</div>
+                <div class="col-4"><strong>11:00</strong></div>
+                <div class="col-8">Exposición de proyectos T/M</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card program-card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Tarde - Sala B</h5>
+              <div class="row">
+                <div class="col-4"><strong>15:00</strong></div>
+                <div class="col-8">Exposición de proyectos T/V</div>
+                <div class="col-4"><strong>17:00</strong></div>
+                <div class="col-8">Taller "Gestión de Proyectos" - SoftServe</div>
+                <div class="col-4"><strong>18:00</strong></div>
+                <div class="col-8">Exposición de proyectos T/V</div>
+                <div class="col-4"><strong>18:30</strong></div>
+                <div class="col-8">Clausura</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Organizers & Speakers -->
+    <section id="organizadores" class="container mb-5">
+      <h2 class="mb-4">Organizadores y Speakers</h2>
+      <div class="row g-4">
+        <!-- Example speaker card -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card speaker-card">
+            <img src="https://picsum.photos/seed/speaker1/600/400" class="card-img-top" alt="speaker">
+            <div class="card-body">
+              <h5 class="card-title">Rigoberto Cárdenas</h5>
+              <p class="small text-muted">Coordinador</p>
+              <div class="d-flex gap-2">
+                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card speaker-card">
+            <img src="https://picsum.photos/seed/speaker2/600/400" class="card-img-top" alt="speaker">
+            <div class="card-body">
+              <h5 class="card-title">Adalberto Chávez</h5>
+              <p class="small text-muted">Coordinador</p>
+              <div class="d-flex gap-2">
+                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- add more cards as needed... -->
+      </div>
+    </section>
+
+    <!-- Sponsors -->
+    <section id="patrocinadores" class="container mb-5">
+      <h2 class="mb-4">Patrocinadores</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <h5>¿Quieres ser patrocinador?</h5>
+                <p>Únete como patrocinador y apoya el talento de estudiantes del TSJ. Ofrecemos espacios de exposición, reclutamiento y visibilidad de marca.</p>
+              </div>
+              <div>
+                <a href="#" class="btn btn-primary">Unirme como patrocinador</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <div id="sponsorsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner d-flex align-items-center justify-content-center" style="min-height:160px">
+              <div class="carousel-item active text-center">
+                <img src="https://picsum.photos/seed/logo1/200/80" class="sponsor-logo" alt="logo1">
+                <img src="https://picsum.photos/seed/logo2/200/80" class="sponsor-logo" alt="logo2">
+                <img src="https://picsum.photos/seed/logo3/200/80" class="sponsor-logo" alt="logo3">
+              </div>
+              <div class="carousel-item text-center">
+                <img src="https://picsum.photos/seed/logo4/200/80" class="sponsor-logo" alt="logo4">
+                <img src="https://picsum.photos/seed/logo5/200/80" class="sponsor-logo" alt="logo5">
+                <img src="https://picsum.photos/seed/logo6/200/80" class="sponsor-logo" alt="logo6">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#sponsorsCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#sponsorsCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Labs layout image + map -->
+    <section id="labs" class="container mb-5">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <h3>Distribución de laboratorios - Edificio L</h3>
+          <p>Mapa estático de la distribución de los laboratorios pertenecientes a la Academia de Sistemas Computacionales.</p>
+          <img src="/mnt/data/XIV Concurso de proyectos de innovación .png" alt="plano-laboratorios" class="img-fluid rounded shadow-sm">
+        </div>
+        <div class="col-md-6">
+          <h3>Ubicación</h3>
+          <p>Geolocalización del Tecnológico Superior de Jalisco</p>
+          <!-- Placeholder iframe: you can replace the src with the real Google Maps embed -->
+          <div class="ratio ratio-4x3">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.0000000000005!2d-103.00000000000001!3d20.666666666666668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x0000000000000000!2sTecnol%C3%B3gico!5e0!3m2!1ses!2smx!4v1234567890123" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Big solid CTA section -->
+    <section id="cta-solid" class="mb-5">
+      <div class="container">
+        <h1>¡Nos vemos en la XVIII edición del concurso de proyectos el miércoles 6 de Diciembre!</h1>
+      </div>
+    </section>
+
+    <!-- Gallery / Grandes momentos -->
+    <section id="galeria" class="container mb-5">
+      <h2 class="mb-4">Grandes momentos</h2>
+      <div class="row gallery-grid g-2">
+        <div class="col-6 col-md-3"><a href="#"><img src="https://picsum.photos/seed/g1/600/400" alt="g1" class="rounded"></a></div>
+        <div class="col-6 col-md-3"><a href="#"><img src="https://picsum.photos/seed/g2/600/400" alt="g2" class="rounded"></a></div>
+        <div class="col-6 col-md-3"><a href="#"><img src="https://picsum.photos/seed/g3/600/400" alt="g3" class="rounded"></a></div>
+        <div class="col-6 col-md-3"><a href="#"><img src="https://picsum.photos/seed/g4/600/400" alt="g4" class="rounded"></a></div>
+      </div>
+      <p class="mt-3"><a class="btn btn-outline-secondary" href="#ediciones">Ver galería completa</a></p>
+    </section>
+
+  </main>
+
+  <!-- Footer similar to Tecnológico Superior de Jalisco -->
+  <footer>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 d-flex align-items-center gap-3">
+          <img src="https://raw.githubusercontent.com/google/material-design-icons/master/png/action/info/material_icon_black_36x36.png" alt="logo" width="64">
+          <div>
+            <strong>Tecnológico Superior de Jalisco</strong><br>
+            Educación Superior Tecnológica
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h6>Contacto</h6>
+          <p class="small mb-0">Av. Tecnológico s/n, Guadalajara, Jalisco<br>Tel: (33) 1234 5678<br>Email: contacto@tsj.mx</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <h6>Síguenos</h6>
+          <a href="#" class="me-2"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="#" class="me-2"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+        </div>
+      </div>
+      <hr class="my-3">
+      <div class="text-center small">© <span id="year"></span> Tecnológico Superior de Jalisco - Innovar para transformar a México</div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
