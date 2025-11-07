@@ -1,460 +1,529 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <link rel="shortcut icon" href="./logoTsj-01-C9uJRbPl.png" type="image/x-icon">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>XVIII Concurso de Proyectos de Innovación - TSJ Zapopan</title>
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    :root{
-      --tsj-purple: #4b2c8a;
-      --accent: #f6a623;
-    }
+<meta charset="utf-8">
+<link rel="shortcut icon" href="./assets/img/logotsj.png" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XVIII Concurso de Proyectos de Innovación - TSJ Zapopan</title>
 
-    .svg-background {
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* ========= VARIABLES Y TIPOGRAFÍA ========= */
+:root {
+  --tsj-purple: #4b2c8a;
+  --accent: #f6a623;
+  --text-dark: #2d2d2d;
+  --surface: #ffffff;
+  --radius: 14px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.65;
+  background: #fafafa;
+}
+
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.5px; }
+
+/* ========= FONDO SVG DINÁMICO ========= */
+.svg-background {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
 }
-
 .bg-svg {
   position: absolute;
-  width: 110px; /* ajusta el tamaño */
-  height: 110px;
-  opacity: 0.13; /* controla la transparencia */
+  width: 100px;
+  opacity: 0.09;
 }
 
-/* Ejemplo posiciones, puedes ajustar o aleatorizar */
-.bg-svg:nth-child(1)  { left: 5%; top: 8%; }
-.bg-svg:nth-child(2)  { left: 22%; top: 15%; }
-.bg-svg:nth-child(3)  { left: 67%; top: 12%; }
-.bg-svg:nth-child(4)  { left: 80%; top: 25%; }
-.bg-svg:nth-child(5)  { left: 15%; top: 60%; }
-.bg-svg:nth-child(6)  { left: 35%; top: 33%; }
-.bg-svg:nth-child(7)  { left: 73%; top: 44%; }
-.bg-svg:nth-child(8)  { left: 52%; top: 22%; }
-.bg-svg:nth-child(9)  { left: 81%; top: 78%; }
-.bg-svg:nth-child(10) { left: 45%; top: 70%; }
-.bg-svg:nth-child(11) { left: 63%; top: 63%; }
-.bg-svg:nth-child(12) { left: 5%; top: 80%; }
-.bg-svg:nth-child(13) { left: 30%; top: 80%; }
-.bg-svg:nth-child(14) { left: 89%; top: 55%; }
-.bg-svg:nth-child(15) { left: 11%; top: 35%; }
+/* ========= HERO ========= */
+.hero-content {
+  position: relative;
+}
 
-    body{font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
-    /* Header / Hero */
-    header.hero{
-      background-image: url('/Concurso_2025_1.JPG');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      position: relative;
-      min-height: 420px;
-    }
-    header .overlay{
-      position:absolute;inset:0;background:linear-gradient(180deg, rgba(75,44,138,0.72), rgba(20,20,40,0.5));
-    }
-    header .hero-content{position:relative;z-index:2;padding:6rem 1rem 4rem}
-    nav .nav-link{color: white !important}
-    /* Welcome section */
-    #welcome{background-image: url('/Hexagon.svg'); background-size:cover;background-position:center;color:white;padding:7rem 1rem}
-    #welcome .backdrop{background: rgba(0,0,0,0.45); padding:3rem; border-radius:10px}
-    #welcome {font-size: 1.3rem; /* Ajusta este valor según lo que requieras */}
-    /* Program cards */
-    .program-card{min-height:220px}
-    .speaker-card img{height:220px;object-fit:cover}
-    /* Sponsors carousel */
-    .sponsor-logo {
-  max-height: 160px;   /* Igualar o acercar al alto del card */
+header.hero{
+  position: relative;
+  background-image: url('./assets/img/Concurso_2025_1.JPG');
+  background-size: cover;
+  background-position: center 35%;
+  min-height: 520px;
+  position: relative;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+header .overlay{
+  position:absolute; inset:0;
+  
+  background:linear-gradient(180deg, rgba(33,22,64,.8), rgba(33,22,64,.4));
+}
+.hero-content h1 {
+  font-size: clamp(2.2rem,4vw,3.5rem);
+  font-weight: 800;
+}
+.btn.btn-warning.btn-lg {
+  background: var(--accent);
+  border:none;
+  padding:0.9rem 2rem;
+  border-radius:var(--radius);
+  transition:.25s;
+}
+.btn.btn-warning.btn-lg:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.25);
+}
+
+/* ========= BIENVENIDA ========= */
+#welcome .backdrop{
+  background: rgba(0,0,0,0.45);
+  padding: 3rem;
+  border-radius: var(--radius);
+  color:white;
+  backdrop-filter: blur(6px);
+}
+
+/* ========= PROGRAMA ========= */
+.program-card{
+  background: var(--surface);
+  border-radius: var(--radius);
+  border:none;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+
+/* ========= SPEAKERS ========= */
+.speaker-card {
+  border-radius: var(--radius);
+  overflow:hidden;
+  border:none;
+  background: var(--surface);
+  transition:.3s;
+}
+.speaker-card img{
+  height:220px;
+  object-fit:cover;
+}
+.speaker-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 10px 26px rgba(0,0,0,.18);
+}
+
+/* ========= CTA ========= */
+#cta-solid {
+  background: linear-gradient(90deg, var(--tsj-purple), #7f54d8);
+  color:white;
+  padding:4rem 1rem;
+  text-align:center;
+}
+#cta-solid h1 {
+  font-weight:800;
+  letter-spacing:-0.8px;
+}
+/* ========= GALERY========= */
+.gallery-img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.gallery-img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.15);
+}
+
+/* Modal estilo Instagram */
+#galleryModal .modal-content {
+  background: rgba(0,0,0,0.85);
+  border: none;
+}
+
+#galleryModal img {
+  width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+/* ========= ANIMACIÓN DE APARICIÓN ========= */
+.speaker-card, .program-card, #cta-solid, #welcome .backdrop {
+  opacity:0;
+  transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+/* ========= EMPRESAS ========= */
+#empresas h2 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.empresa-logo {
+  max-height: 75px;
   width: auto;
   object-fit: contain;
-  padding: 1rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  filter: grayscale(0%);
+  opacity: 0.9;
+  transition: .3s;
 }
-#sponsorsCarousel {
-  min-height: 100%;  /* El carrusel ocupa todo el alto disponible */
-  display: flex;
-  align-items: center;
+
+.empresa-logo:hover {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: scale(1.07);
 }
-.carousel-inner {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+#labs h2 {
+  font-weight: 700;
 }
-.carousel-item {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+
+#labs h4 {
+  font-weight: 600;
+  color: var(--tsj-purple);
 }
-    /* Solid CTA section */
-    #cta-solid{background:var(--tsj-purple);color:white;padding:3rem 1rem;text-align:center}
-    #cta-solid h1{font-weight:700}
-    /* Gallery grid */
-    .gallery-grid img{width:100%;height:160px;object-fit:cover}
-    footer{background:#1b1b1b;color:#ddd;padding:2rem 1rem}
-    footer a{color:#fff}
-    /* Make nav UL/LI style as requested */
-    .custom-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem}
-    .custom-nav li{display:inline}
-    @media(min-width:992px){
-      header.hero{min-height:520px}
-    }
-  </style>
+
+#labs img,
+#labs iframe {
+  border-radius: 12px;
+}
+
+#labs p {
+  font-size: 1.05rem;
+}
+#labs iframe {
+  border-radius: 12px;
+}
+
+</style>
 </head>
+
 <body>
-<div class="svg-background">
-  <img src="f1.svg" class="bg-svg" />
-  <img src="f2.svg" class="bg-svg" />
-  <img src="f3.svg" class="bg-svg" />
-  <img src="f4.svg" class="bg-svg" />
-  <img src="f5.svg" class="bg-svg" />
-  <img src="f6.svg" class="bg-svg" />
-  <img src="f7.svg" class="bg-svg" />
-  <img src="f8.svg" class="bg-svg" />
-  <img src="f9.svg" class="bg-svg" />
-  <img src="f10.svg" class="bg-svg" />
-  <img src="f11.svg" class="bg-svg" />
-  <img src="f12.svg" class="bg-svg" />
-  <img src="f13.svg" class="bg-svg" />
-  <img src="f14.svg" class="bg-svg" />
-  <img src="f15.svg" class="bg-svg" />
-</div>
-  <!-- Header with navigation -->
-  <header class="hero">
-    <div class="overlay"></div>
-    <nav class="navbar navbar-expand-lg navbar-dark container py-3">
-      <a class="navbar-brand d-flex align-items-center" href="#inicio">
-        <img src="./logotsj.png" alt="logo" width="48" height="48" class="me-2">
-        <div>
-          <div style="font-size:14px;opacity:.9">Tecnológico Superior de Jalisco Zapopan</div>
-          <strong style="font-size:18px">Concurso de Proyectos de Innovación</strong>
-        </div>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="mainNav">
-        <div class="ms-auto custom-nav">
-          <!-- UL and LI as required -->
-          <ul>
-            <li class="d-inline"><a class="nav-link" href="#inicio">Inicio</a></li>
-            <li class="d-inline"><a class="nav-link" href="#proyectos">Proyectos</a></li>
-            <li class="d-inline"><a class="nav-link" href="#galeria">Galería</a></li>
-            <li class="d-inline"><a class="nav-link" href="#ediciones">Ediciones anteriores</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<div id="svg-bg" class="svg-background"></div>
 
-    <div class="container hero-content text-white">
-      <div class="row align-items-center">
-        <div class="col-lg-7">
-          <h1 class="display-4">XVIII Concurso de Proyectos de Innovación </h1>
-          <p class="lead">“La innovación distingue a un líder de un seguidor.” — Steve Jobs. </p>
-          <a href="#proyectos" class="btn btn-warning btn-lg">Ver programa</a>
-        </div>
-        <div class="col-lg-5 d-none d-lg-block text-end">
-          <!-- space for an image or award badge -->
-        </div>
-      </div>
+<header class="hero" id="inicio">
+<div class="overlay"></div>
+
+<nav class="navbar navbar-expand-lg navbar-dark container py-3">
+  <a class="navbar-brand d-flex align-items-center" href="#inicio">
+    <img src="./assets/img/logotsj.png" width="48" height="48" class="me-2">
+    <div>
+      <div style="font-size:14px;opacity:.9">Tecnológico Superior de Jalisco Zapopan</div>
+      <strong style="font-size:18px">Concurso de Proyectos de Innovación</strong>
     </div>
-  </header>
+  </a>
+</nav>
 
-  <!-- Main content -->
-  <main class="mt-5">
+<div class="container hero-content">
+  <h1 class="text-white">XVIII Concurso de Proyectos de Innovación</h1>
+  <p class="lead">“La innovación distingue a un líder de un seguidor.” — Steve Jobs.</p>
+  <a href="#proyectos" class="btn btn-warning btn-lg">Ver programa</a>
+</div>
+</header>
 
-    <!-- Welcome section -->
-    <section id="welcome" class="container mb-5">
-      <div class="backdrop">
-        <h1>Bienvenida</h1>
-        <p>¡Sean todas y todos bienvenidos a la <strong>XVIII edición del Concurso de Innovación de Proyectos</strong> del Tecnológico Superior de Jalisco Zapopan!</p> 
+
+<main class="mt-5">
+
+<section id="welcome" class="container mb-5">
+  <div class="backdrop">
+    <h1>Bienvenida</h1>
+    <p>¡Sean todas y todos bienvenidos a la <strong>XVIII edición del Concurso de Innovación de Proyectos</strong> del Tecnológico Superior de Jalisco Zapopan!</p> 
         <p>Este evento es una celebración semestral que convoca a <strong>alumnos, docentes y empresas</strong> para reconocer el talento y la creatividad en el desarrollo de proyectos realizados por estudiantes durante el semestre. El concurso destaca la capacidad de nuestros alumnos para aplicar sus conocimientos y competencias en la resolución de <em>problemáticas reales</em> presentes en sus comunidades locales.</p> 
         <p>La feria de proyectos ofrece un espacio de encuentro y aprendizaje, donde los participantes presentan soluciones innovadoras, comparten experiencias, y reciben retroalimentación directa de especialistas, docentes y representantes del sector productivo. Las empresas participantes tienen la oportunidad de conocer ideas emergentes, vincularse con nuevos talentos y apoyar la formación profesional de nuestros estudiantes.</p> 
         <p>Queremos promover el espíritu de colaboración, el compromiso social y la búsqueda constante de la excelencia. Te invitamos a sumarte y ser partícipe de esta jornada, explorar los proyectos presentados y descubrir los beneficios que genera la participación conjunta en este inspirador evento académico y tecnológico.</p> 
         <p>¡Gracias por ser parte de esta edición dedicada a fortalecer la innovación, el aprendizaje y la vinculación universitaria!</p>
       </div>
-    </section>
+</section>
 
-    <!-- Program section -->
-    <section id="proyectos" class="container mb-5">
-      <h2 class="mb-4">Programa</h2>
-      <div class="row gy-4">
-        <div class="col-md-6">
-          <div class="card program-card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title"><strong>Mañana</strong></h5>
-              <div class="row">
-                <div class="col-4"><strong>09:00</strong></div>
-                <div class="col-8">Inauguración</div>
-                <div class="col-4"><strong>09:15</strong></div>
-                <div class="col-8">Exposición de proyectos T/M</div>
-                <div class="col-4"><strong>10:30</strong></div>
-                <div class="col-8">Coffee Break</div>
-                <div class="col-4"><strong>11:00</strong></div>
-                <div class="col-8">Exposición de proyectos T/M</div>
-                <div class="col-4"><strong>12:00</strong></div>
-                <div class="col-8">Taller "LinkedIn for Hiring!!", C. Gina Camarena - SoftServe</div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-md-6">
-          <div class="card program-card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title"><strong>Tarde</strong></h5>
-              <div class="row">
-                <div class="col-4"><strong>16:00</strong></div>
-                <div class="col-8">Exposición de proyectos T/V</div>
-                <div class="col-4"><strong>17:00</strong></div>
-                <div class="col-8">Coffee Break</div>
-                <div class="col-4"><strong>18:00</strong></div>
-                <div class="col-8">Conferencia, Dr. Angelina Alarcón - Secretaria Educación Jalisco</div>
-                <div class="col-4"><strong>18:30</strong></div>
-                <div class="col-8">Clausura</div>
-              </div>
-            </div>
-          </div>
-        </div>
+<section id="proyectos" class="container mb-5">
+  <h2 class="mb-4">Programa</h2>
+  <div class="row gy-4">
+
+    <div class="col-md-6">
+      <div class="card program-card p-3">
+        <h5><strong>Mañana</strong></h5>
+        09:00 Inauguración<br>
+        09:15 Exposición Proyectos T/M<br>
+        10:30 Exposición T/M<br>
+        11:00 Coffee Break<br>
+        12:00 Exposición Proyectos T/M<br>
+        13:00 Taller "LinkedIn for Hiring!!"<br>
+        C. Gina Camarena - SoftServe<br>
+        ...
       </div>
-    </section>
+    </div>
 
-    <!-- Organizers & Speakers -->
-    <section id="organizadores" class="container mb-5">
-      <h2 class="mb-4">Organizadores, colaboradores e invitados</h2>
-      <div class="row g-4">
-        <!-- Example speaker card -->
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card speaker-card">
-            <img src="/c0rd1.png" class="card-img-top" alt="speaker">
-            <div class="card-body">
-              <h5 class="card-title">Coordinadores</h5>
-              <p class="small text-muted">Academia ISC</p>
-              <div class="d-flex gap-2">
-                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card speaker-card">
-            <img src="/c0l4.png" class="card-img-top" alt="speaker">
-            <div class="card-body">
-              <h5 class="card-title">Colaboradores</h5>
-              <p class="small text-muted">Academia ISC</p>
-              <div class="d-flex gap-2">
-                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card speaker-card">
-            <img src="/1741719267389.png" class="card-img-top" alt="speaker">
-            <div class="card-body">
-              <h5 class="card-title">C. Gutierrez Camarena Gina</h5>
-              <p class="small text-muted">SOFTSERVE</p>
-              <div class="d-flex gap-2">
-                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card speaker-card">
-            <img src="/1730166035765.png" class="card-img-top" alt="speaker">
-            <div class="card-body">
-              <h5 class="card-title"> C. Guzman Vazquez Erandi Anaid</h5>
-              <p class="small text-muted">SOFTSERVE</p>
-              <div class="d-flex gap-2">
-                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card speaker-card">
-            <img src="/1695307461447.png" class="card-img-top" alt="speaker">
-            <div class="card-body">
-              <h5 class="card-title">C. Mendoza Yepiz Luis Mariano</h5>
-              <p class="small text-muted">Zegnal Consultings|SAP</p>
-              <div class="d-flex gap-2">
-                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card speaker-card">
-            <img src="/1573575601581.png" class="card-img-top" alt="speaker">
-            <div class="card-body">
-              <h5 class="card-title">C. Martinez Palacios Joel</h5>
-              <p class="small text-muted">CodeNation|Intel</p>
-              <div class="d-flex gap-2">
-                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card speaker-card">
-            <img src="/16953074614314.png" class="card-img-top" alt="speaker">
-            <div class="card-body">
-              <h5 class="card-title">C. Alarcón Romero Ma. Angelina</h5>
-              <p class="small text-muted">S. Educación Jalisco</p>
-              <div class="d-flex gap-2">
-                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- add more cards as needed... -->
+    <div class="col-md-6">
+      <div class="card program-card p-3">
+        <h5><strong>Tarde</strong></h5>
+        16:00 Exposición Proyectos T/V<br>
+        17:00 Coffee Break<br>
+        17:30 Exposición T/V<br>
+        18:00 Conferencia, Dra. Angelina Alarcón<br>
+        Secretaria Educación Jalisco<br>
+        19:00 Exposición T/V<br>
+        ...
       </div>
-    </section>
+    </div>
 
-    <!-- Sponsors -->
-    <section id="patrocinadores" class="container mb-5">
-      <h2 class="mb-4">Patrocinadores</h2>
-      <div class="row g-4 align-items-stretch">
-  <div class="col-md-4 d-flex">
-    <div class="card h-100 shadow-sm w-100">
-      <div class="card-body d-flex flex-column justify-content-between">
-        <div>
-          <h5>¿Quieres ser patrocinador?</h5>
-          <p>
-            Únete como patrocinador y apoya el talento de estudiantes del TSJ. Ofrecemos espacios de exposición, reclutamiento y visibilidad de marca.
-          </p>
-        </div>
-        <a href="#" class="btn btn-primary mt-auto">Unirme como patrocinador</a>
+  </div>
+</section>
+
+
+<section id="organizadores" class="container mb-5">
+<h2 class="mb-4">Organizadores, colaboradores e invitados</h2>
+<div class="row g-4">
+
+<div class="col-sm-6 col-md-4 col-lg-3">
+  <div class="card speaker-card">
+    <img src="./assets/img/c0rd1.png">
+    <div class="card-body">
+      <h5>Coordinadores</h5>
+      <p class="small">Academia ISC</p>
+    </div>
+  </div>
+</div>
+
+<!-- Repite igual para los demás -->
+<div class="col-sm-6 col-md-4 col-lg-3">
+  <div class="card speaker-card">
+    <img src="./assets/img/c0l4.png">
+    <div class="card-body">
+      <h5>Colaboradores</h5>
+      <p class="small">Academia ISC</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-6 col-md-4 col-lg-3">
+  <div class="card speaker-card">
+    <img src="./assets/img/1741719267389.png">
+    <div class="card-body">
+      <h5>C. Gutierrez Camarena Gina</h5>
+      <p class="small">SOFTSERVE</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-6 col-md-4 col-lg-3">
+  <div class="card speaker-card">
+    <img src="./assets/img/1730166035765.png">
+    <div class="card-body">
+      <h5>C. Guzman Vazquez Erandi Anaid</h5>
+      <p class="small">SOFTSERVE</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-6 col-md-4 col-lg-3">
+  <div class="card speaker-card">
+    <img src="./assets/img/1695307461447.png">
+    <div class="card-body">
+      <h5>C. Mendoza Yepiz Luis Mariano</h5>
+      <p class="small">Zegnal Consultings|SAP</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-sm-6 col-md-4 col-lg-3">
+  <div class="card speaker-card">
+    <img src="./assets/img/1573575601581.png">
+    <div class="card-body">
+      <h5>C. Martinez Palacios Joel</h5>
+      <p class="small">CodeNation|Intel</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-6 col-md-4 col-lg-3">
+  <div class="card speaker-card">
+    <img src="./assets/img/1731100254822.jpeg">
+    <div class="card-body">
+      <h5>C. Martinez Marmolejo Francisco</h5>
+      <p class="small">CodeNation|Intel</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-6 col-md-4 col-lg-3">
+  <div class="card speaker-card">
+    <img src="./assets/img/16953074614314.png">
+    <div class="card-body">
+      <h5>C. Alarcón Romero Ma. Angelina</h5>
+      <p class="small">Educación Jalisco</p>
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
+
+
+<section id="cta-solid" class="mb-5">
+<div class="container">
+<h1>¡Nos vemos el miércoles 3 de diciembre!</h1>
+</div>
+</section>
+<section id="galeria" class="container mb-5">
+  <h2 class="mb-4 text-center">Grandes Momentos</h2>
+
+  <div class="row g-2">
+    <div class="col-6 col-md-3">
+      <img src="./assets/img/galeria/g1.png" class="gallery-img rounded" data-index="0">
+    </div>
+    <div class="col-6 col-md-3">
+      <img src="./assets/img/galeria/g2.png" class="gallery-img rounded" data-index="1">
+    </div>
+    <div class="col-6 col-md-3">
+      <img src="./assets/img/galeria/g3.png" class="gallery-img rounded" data-index="2">
+    </div>
+    <div class="col-6 col-md-3">
+      <img src="./assets/img/galeria/g4.png" class="gallery-img rounded" data-index="3">
+    </div>
+    <div class="col-6 col-md-3">
+      <img src="./assets/img/galeria/g5.png" class="gallery-img rounded" data-index="4">
+    </div>
+    <div class="col-6 col-md-3">
+      <img src="./assets/img/galeria/g6.png" class="gallery-img rounded" data-index="5">
+    </div>
+    <div class="col-6 col-md-3">
+      <img src="./assets/img/galeria/g7.png" class="gallery-img rounded" data-index="6">
+    </div>
+    <div class="col-6 col-md-3">
+      <img src="./assets/img/galeria/g8.png" class="gallery-img rounded" data-index="7">
+    </div>
+  </div>
+</section>
+
+</main>
+<section id="empresas" class="container my-5">
+  <h2 class="text-center mb-4">Empresas Aliadas</h2>
+
+  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+    <img src="./assets/img/logos/Recurso 1.png" class="empresa-logo" alt="SoftServe">
+    <img src="./assets/img/logos/23465675.png" class="empresa-logo" alt="Zegnal Consulting">
+    <img src="./assets/img/logos/34243242.png" class="empresa-logo" alt="CodeNation">
+    <img src="./assets/img/logos/86854456.png" class="empresa-logo" alt="Intel">
+    <img src="./assets/img/logos/678576432.png" class="empresa-logo" alt="Secretaría de Educación Jalisco">
+  </div>
+</section>
+
+<section id="labs" class="container my-5">
+  <h2 class="text-center mb-4">Sede del Evento</h2>
+
+  <div class="row g-4">
+
+    <div class="col-md-6">
+      <h4>Mapa Unidad Académica Zapopan</h4>
+      <p>Edificio L - Sede del evento perteneciente a la Academia de Ingeniería en Sistemas Computacionales.</p>
+
+      <img src="./assets/img/labs-ubicacion.jpg"
+        alt="Plano de laboratorios"
+        class="img-fluid rounded shadow-sm w-100">
+    </div>
+
+    <div class="col-md-6">
+      <h4>Ubicación</h4>
+      <p>Camino Arenero 1101, Zapopan, Jalisco.</p>
+
+     <div class="ratio ratio-4x3 rounded shadow-sm overflow-hidden">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9531.985587338153!2d-103.46917204999999!3d20.705047999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428a92008505ae3%3A0xac0da90d95e836af!2sTecnol%C3%B3gico%20Superior%20de%20Jalisco%20Zapopan!5e0!3m2!1ses!2smx!4v1730899030301!5m2!1ses!2smx"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<footer class="text-center py-4">
+<img src="./assets/img/logotsj.png" width="60"><br>
+<span id="year"></span> ISC Tecnológico Superior de Jalisco Zapopan
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Animación de aparición */
+const reveal = () => {
+  document.querySelectorAll('.speaker-card, .program-card, #cta-solid, #welcome .backdrop')
+    .forEach(el => { el.style.opacity = 1; el.style.transform = "translateY(0)";});
+};
+window.addEventListener('load', reveal);
+
+/* Fondo SVG dinámico */
+const cont = document.getElementById('svg-bg');
+const svgs = ["f1.svg","f2.svg","f3.svg","f4.svg","f5.svg"];
+for(let i=0;i<18;i++){
+  const img = document.createElement("img");
+  img.src = `./assets/svg/${svgs[Math.floor(Math.random()*svgs.length)]}`;
+  img.className = "bg-svg";
+  img.style.top = Math.random()*95 + "%";
+  img.style.left = Math.random()*95 + "%";
+  cont.appendChild(img);
+}
+</script>
+<div class="modal fade" id="galleryModal" tabindex="-1">
+  <div class="modal-dialog modal-fullscreen-sm-down modal-lg modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-body p-0 position-relative">
+        <img id="galleryModalImg" src="">
+        <button id="prevBtn" class="btn btn-light position-absolute top-50 start-0 translate-middle-y">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button id="nextBtn" class="btn btn-light position-absolute top-50 end-0 translate-middle-y">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </div>
     </div>
   </div>
+</div>
 
-        <div class="col-md-8 d-flex">
-    <div id="sponsorsCarousel" class="carousel slide w-100 h-100 d-flex align-items-center" data-bs-ride="carousel" style="min-height: 100%;">
-      <div class="carousel-inner d-flex align-items-center justify-content-center" style="height:100%;">
-        <div class="carousel-item active text-center">
-          <img src="2345436.png" class="sponsor-logo mx-auto" alt="logo1">
-        </div>
-              <div class="carousel-item text-center">
-                <img src="https://picsum.photos/seed/logo4/200/80" class="sponsor-logo" alt="logo4">
-                <img src="https://picsum.photos/seed/logo5/200/80" class="sponsor-logo" alt="logo5">
-                <img src="https://picsum.photos/seed/logo6/200/80" class="sponsor-logo" alt="logo6">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#sponsorsCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#sponsorsCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Labs layout image + map -->
-    <section id="labs" class="container mb-5">
-      <div class="row g-4">
-        <div class="col-md-6">
-          <h3>Unidad Academica Zapopan</h3>
-          <p> Edificio L - Sede del evento pertenecientes a la Academia de Sistemas Computacionales.</p>
-          <img src="https://scontent-qro1-1.xx.fbcdn.net/v/t39.30808-6/544632699_1187221233448621_4578268765333012482_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=RaLCgl7LthgQ7kNvwH6bcXl&_nc_oc=AdnqAEL_XliluqooYWYfJRuksNQqiwmhR_t6lpW-X2-9GcXB1WgZD-yc6JI4HBZa8MI&_nc_zt=23&_nc_ht=scontent-qro1-1.xx&_nc_gid=nhaX9Wv80FafThSOb60ZZg&oh=00_Afi5IjqSTurB3VVaoHDWS_wAi8uf54kM0QkSEUFHR3512w&oe=69115DD0" alt="plano-laboratorios" class="img-fluid rounded shadow-sm" width="90%" height="80%">
-        </div>
-        <div class="col-md-6">
-          <h3>Ubicación</h3>
-          <p>Geolocalización del Tecnológico Superior de Jalisco Zapopan</p>
-          <!-- Placeholder iframe: you can replace the src with the real Google Maps embed -->
-          <div class="ratio ratio-4x3"><p>Camino Arenero 1101 45019, Zapopan, Jalisco</p>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9532.015912463226!2d-103.47132874616723!3d20.70456403385319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428a92008505ae3%3A0xac0da90d95e836af!2sTecnol%C3%B3gico%20Superior%20de%20Jalisco%20Zapopan!5e0!3m2!1ses!2smx!4v1751047031962!5m2!1ses!2smx" class="ubicationIframeMap" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="90%" height="80%"></iframe></div>
-        </div>
-      </div>
-    </section>
+<script>
+const images = document.querySelectorAll(".gallery-img");
+const modalImg = document.getElementById("galleryModalImg");
+let currentIndex = 0;
 
-    <!-- Big solid CTA section -->
-    <section id="cta-solid" class="mb-5">
-      <div class="container">
-        <h1>¡Nos vemos en la XVIII edición del concurso de proyectos el miércoles 3 de Diciembre!</h1>
-      </div>
-    </section>
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    currentIndex = parseInt(img.dataset.index);
+    showImage();
+    new bootstrap.Modal(document.getElementById('galleryModal')).show();
+  });
+});
 
-    <!-- Gallery / Grandes momentos -->
-    <section id="galeria" class="container mb-5">
-      <h2 class="mb-4">Grandes momentos</h2>
-      <div class="row gallery-grid g-2">
-        <div class="col-6 col-md-3"><a href="#"><img src="https://picsum.photos/seed/g1/600/400" alt="g1" class="rounded"></a></div>
-        <div class="col-6 col-md-3"><a href="#"><img src="https://picsum.photos/seed/g2/600/400" alt="g2" class="rounded"></a></div>
-        <div class="col-6 col-md-3"><a href="#"><img src="https://picsum.photos/seed/g3/600/400" alt="g3" class="rounded"></a></div>
-        <div class="col-6 col-md-3"><a href="#"><img src="https://picsum.photos/seed/g4/600/400" alt="g4" class="rounded"></a></div>
-      </div>
-      <p class="mt-3"><a class="btn btn-outline-secondary" href="#ediciones">Ver galería completa</a></p>
-    </section>
+function showImage() {
+  modalImg.src = images[currentIndex].src;
+}
 
-  </main>
+document.getElementById("nextBtn").onclick = () => {
+  currentIndex = (currentIndex + 1) % images.length;
+  showImage();
+};
 
-  <!-- Footer similar to Tecnológico Superior de Jalisco -->
-  <footer>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-4 d-flex align-items-center gap-3">
-          <img src="/logotsj.png" alt="logo" width="64">
-          <div>
-            <strong>Tecnológico Superior de Jalisco</strong><br>
-            Educación Superior Tecnológica
-          </div>
-        </div>
-        <div class="col-md-4">
-          <h6>Contacto</h6>
-          <p class="small mb-0">Cam. Arenero 1101, 45019 Zapopan, Jal.<br>Tel: (33) 3682 1180<br>Email: ing.sistemas@zapopan.tecmm.edu.mx</p>
-        </div>
-        <div class="col-md-4 text-md-end">
-          <h6>Síguenos</h6>
-          <a href="#" class="me-2"><i class="fab fa-facebook fa-lg"></i></a>
-          <a href="#" class="me-2"><i class="fab fa-instagram fa-lg"></i></a>
-          <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
-        </div>
-      </div>
-      <hr class="my-3">
-      <div class="text-center small">© <span id="year"></span> Tecnológico Superior de Jalisco - Innovar para transformar a México</div>
-    </div>
-  </footer>
+document.getElementById("prevBtn").onclick = () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  showImage();
+};
+</script>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
