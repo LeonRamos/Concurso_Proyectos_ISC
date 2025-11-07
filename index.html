@@ -70,7 +70,32 @@
     .program-card{min-height:220px}
     .speaker-card img{height:220px;object-fit:cover}
     /* Sponsors carousel */
-    .sponsor-logo{height:80px;object-fit:contain;padding:1rem}
+    .sponsor-logo {
+  max-height: 160px;   /* Igualar o acercar al alto del card */
+  width: auto;
+  object-fit: contain;
+  padding: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#sponsorsCarousel {
+  min-height: 100%;  /* El carrusel ocupa todo el alto disponible */
+  display: flex;
+  align-items: center;
+}
+.carousel-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-item {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
     /* Solid CTA section */
     #cta-solid{background:var(--tsj-purple);color:white;padding:3rem 1rem;text-align:center}
     #cta-solid h1{font-weight:700}
@@ -179,7 +204,7 @@
                 <div class="col-4"><strong>11:00</strong></div>
                 <div class="col-8">Exposición de proyectos T/M</div>
                 <div class="col-4"><strong>12:00</strong></div>
-                <div class="col-8">Taller "LinkedIn for Hiring!!" - SoftServe</div>
+                <div class="col-8">Taller "LinkedIn for Hiring!!", C. Gina Camarena - SoftServe</div>
               </div>
             </div>
           </div>
@@ -195,7 +220,7 @@
                 <div class="col-4"><strong>17:00</strong></div>
                 <div class="col-8">Coffee Break</div>
                 <div class="col-4"><strong>18:00</strong></div>
-                <div class="col-8">Exposición de proyectos T/V</div>
+                <div class="col-8">Conferencia, Dr. Angelina Alarcón - Secretaria Educación Jalisco</div>
                 <div class="col-4"><strong>18:30</strong></div>
                 <div class="col-8">Clausura</div>
               </div>
@@ -207,15 +232,15 @@
 
     <!-- Organizers & Speakers -->
     <section id="organizadores" class="container mb-5">
-      <h2 class="mb-4">Organizadores y Speakers</h2>
+      <h2 class="mb-4">Organizadores, colaboradores e invitados</h2>
       <div class="row g-4">
         <!-- Example speaker card -->
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="card speaker-card">
-            <img src="/UM.png" class="card-img-top" alt="speaker">
+            <img src="/c0rd1.png" class="card-img-top" alt="speaker">
             <div class="card-body">
-              <h5 class="card-title">García Cerpas José Luis</h5>
-              <p class="small text-muted">Coordinador</p>
+              <h5 class="card-title">Coordinadores</h5>
+              <p class="small text-muted">Academia ISC</p>
               <div class="d-flex gap-2">
                 <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
@@ -227,70 +252,10 @@
 
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="card speaker-card">
-            <img src="/UM.png" class="card-img-top" alt="speaker">
+            <img src="/c0l4.png" class="card-img-top" alt="speaker">
             <div class="card-body">
-              <h5 class="card-title">Bernal Marín Miguel</h5>
-              <p class="small text-muted">Coordinador</p>
-              <div class="d-flex gap-2">
-                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card speaker-card">
-            <img src="/UF.png" class="card-img-top" alt="speaker">
-            <div class="card-body">
-              <h5 class="card-title">López Huezo Ana Fabiola</h5>
-              <p class="small text-muted">Colaboradores</p>
-              <div class="d-flex gap-2">
-                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card speaker-card">
-            <img src="/173016601485.png" class="card-img-top" alt="speaker">
-            <div class="card-body">
-              <h5 class="card-title">Ramos Corchado León Miguel</h5>
-              <p class="small text-muted">Colaboradores</p>
-              <div class="d-flex gap-2">
-                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card speaker-card">
-            <img src="/UM.png" class="card-img-top" alt="speaker">
-            <div class="card-body">
-              <h5 class="card-title">Reyes Gómez Quinátzin</h5>
-              <p class="small text-muted">Colaboradores</p>
-              <div class="d-flex gap-2">
-                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card speaker-card">
-            <img src="/UM.png" class="card-img-top" alt="speaker">
-            <div class="card-body">
-              <h5 class="card-title">González Montes Hugo Miguel</h5>
-              <p class="small text-muted">Colaboradores</p>
+              <h5 class="card-title">Colaboradores</h5>
+              <p class="small text-muted">Academia ISC</p>
               <div class="d-flex gap-2">
                 <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
@@ -304,7 +269,7 @@
           <div class="card speaker-card">
             <img src="/1741719267389.png" class="card-img-top" alt="speaker">
             <div class="card-body">
-              <h5 class="card-title">Gutierrez Camarena Gina</h5>
+              <h5 class="card-title">C. Gutierrez Camarena Gina</h5>
               <p class="small text-muted">SOFTSERVE</p>
               <div class="d-flex gap-2">
                 <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -319,7 +284,7 @@
           <div class="card speaker-card">
             <img src="/1730166035765.png" class="card-img-top" alt="speaker">
             <div class="card-body">
-              <h5 class="card-title">Guzman Vazquez Erandi Anaid</h5>
+              <h5 class="card-title"> C. Guzman Vazquez Erandi Anaid</h5>
               <p class="small text-muted">SOFTSERVE</p>
               <div class="d-flex gap-2">
                 <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -334,8 +299,8 @@
           <div class="card speaker-card">
             <img src="/1695307461447.png" class="card-img-top" alt="speaker">
             <div class="card-body">
-              <h5 class="card-title">Mendoza Yepiz Luis Mariano</h5>
-              <p class="small text-muted">Zegnal Consultings</p>
+              <h5 class="card-title">C. Mendoza Yepiz Luis Mariano</h5>
+              <p class="small text-muted">Zegnal Consultings|SAP</p>
               <div class="d-flex gap-2">
                 <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
@@ -349,8 +314,23 @@
           <div class="card speaker-card">
             <img src="/1573575601581.png" class="card-img-top" alt="speaker">
             <div class="card-body">
-              <h5 class="card-title">Martinez Palacios Joel</h5>
+              <h5 class="card-title">C. Martinez Palacios Joel</h5>
               <p class="small text-muted">CodeNation|Intel</p>
+              <div class="d-flex gap-2">
+                <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="btn btn-outline-danger btn-sm" title="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card speaker-card">
+            <img src="/16953074614314.png" class="card-img-top" alt="speaker">
+            <div class="card-body">
+              <h5 class="card-title">C. Alarcón Romero Ma. Angelina</h5>
+              <p class="small text-muted">S. Educación Jalisco</p>
               <div class="d-flex gap-2">
                 <a href="#" class="btn btn-outline-primary btn-sm" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="#" class="btn btn-outline-primary btn-sm" title="Facebook"><i class="fab fa-facebook"></i></a>
@@ -367,29 +347,27 @@
     <!-- Sponsors -->
     <section id="patrocinadores" class="container mb-5">
       <h2 class="mb-4">Patrocinadores</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div>
-                <h5>¿Quieres ser patrocinador?</h5>
-                <p>Únete como patrocinador y apoya el talento de estudiantes del TSJ. Ofrecemos espacios de exposición, reclutamiento y visibilidad de marca.</p>
-              </div>
-              <div>
-                <a href="#" class="btn btn-primary">Unirme como patrocinador</a>
-              </div>
-            </div>
-          </div>
+      <div class="row g-4 align-items-stretch">
+  <div class="col-md-4 d-flex">
+    <div class="card h-100 shadow-sm w-100">
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5>¿Quieres ser patrocinador?</h5>
+          <p>
+            Únete como patrocinador y apoya el talento de estudiantes del TSJ. Ofrecemos espacios de exposición, reclutamiento y visibilidad de marca.
+          </p>
         </div>
+        <a href="#" class="btn btn-primary mt-auto">Unirme como patrocinador</a>
+      </div>
+    </div>
+  </div>
 
-        <div class="col-md-8">
-          <div id="sponsorsCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner d-flex align-items-center justify-content-center" style="min-height:160px">
-              <div class="carousel-item active text-center">
-                <img src="https://picsum.photos/seed/logo1/200/80" class="sponsor-logo" alt="logo1">
-                <img src="https://picsum.photos/seed/logo2/200/80" class="sponsor-logo" alt="logo2">
-                <img src="https://picsum.photos/seed/logo3/200/80" class="sponsor-logo" alt="logo3">
-              </div>
+        <div class="col-md-8 d-flex">
+    <div id="sponsorsCarousel" class="carousel slide w-100 h-100 d-flex align-items-center" data-bs-ride="carousel" style="min-height: 100%;">
+      <div class="carousel-inner d-flex align-items-center justify-content-center" style="height:100%;">
+        <div class="carousel-item active text-center">
+          <img src="2345436.png" class="sponsor-logo mx-auto" alt="logo1">
+        </div>
               <div class="carousel-item text-center">
                 <img src="https://picsum.photos/seed/logo4/200/80" class="sponsor-logo" alt="logo4">
                 <img src="https://picsum.photos/seed/logo5/200/80" class="sponsor-logo" alt="logo5">
