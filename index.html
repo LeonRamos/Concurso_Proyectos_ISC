@@ -200,6 +200,81 @@ header .overlay{
 #labs iframe {
   border-radius: 12px;
 }
+/* ===== FOOTER ESTILO TECMM ===== */
+
+.footer-tecmm {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 50px 20px 0;
+  margin-top: 60px;
+  font-size: 15px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1300px;
+  margin: auto;
+  padding-bottom: 40px;
+}
+
+.footer-column h4 {
+  font-size: 17px;
+  margin-bottom: 15px;
+  color: #f3f3f3;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin: 8px 0;
+}
+
+.footer-column ul li a {
+  color: #ddd;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #00a5e3;
+}
+
+/* Logo */
+.footer-logo {
+  width: 160px;
+  margin-bottom: 10px;
+}
+
+/* Redes */
+.footer-social a {
+  display: inline-block;
+  margin-right: 12px;
+  font-size: 20px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.footer-social a:hover {
+  color: #00a5e3;
+}
+
+/* Barra inferior */
+.footer-bottom {
+  background: #111;
+  text-align: center;
+  padding: 12px 0;
+  margin-top: 25px;
+  font-size: 14px;
+  border-top: 1px solid #333;
+}
+
 
 </style>
 </head>
@@ -235,8 +310,8 @@ header .overlay{
   <div class="backdrop">
     <h1>Bienvenida</h1>
     <p>¡Sean todas y todos bienvenidos a la <strong>XVIII edición del Concurso de Innovación de Proyectos</strong> del Tecnológico Superior de Jalisco Zapopan!</p> 
-        <p>Este evento es una celebración semestral que convoca a <strong>alumnos, docentes y empresas</strong> para reconocer el talento y la creatividad en el desarrollo de proyectos realizados por estudiantes durante el semestre. El concurso destaca la capacidad de nuestros alumnos para aplicar sus conocimientos y competencias en la resolución de <em>problemáticas reales</em> presentes en sus comunidades locales.</p> 
-        <p>La feria de proyectos ofrece un espacio de encuentro y aprendizaje, donde los participantes presentan soluciones innovadoras, comparten experiencias, y reciben retroalimentación directa de especialistas, docentes y representantes del sector productivo. Las empresas participantes tienen la oportunidad de conocer ideas emergentes, vincularse con nuevos talentos y apoyar la formación profesional de nuestros estudiantes.</p> 
+        <p>Este evento se celebra de forma semestral y convoca a <strong>alumnos, docentes y empresas</strong> del área de TI para reconocer el talento y la creatividad en el desarrollo de proyectos realizados por estudiantes durante el semestre. El concurso destaca la capacidad de nuestros alumnos para aplicar sus conocimientos y competencias en la resolución de <em>problemáticas reales</em> presentes en sus comunidades locales.</p> 
+        <p>El Concurso de proyectos ofrece un espacio de encuentro y aprendizaje, donde los participantes presentan soluciones innovadoras, comparten experiencias, y reciben retroalimentación directa de especialistas, docentes y representantes del sector productivo. Las empresas participantes tienen la oportunidad de conocer ideas emergentes, vincularse con nuevos talentos y apoyar la formación profesional de nuestros estudiantes.</p> 
         <p>Queremos promover el espíritu de colaboración, el compromiso social y la búsqueda constante de la excelencia. Te invitamos a sumarte y ser partícipe de esta jornada, explorar los proyectos presentados y descubrir los beneficios que genera la participación conjunta en este inspirador evento académico y tecnológico.</p> 
         <p>¡Gracias por ser parte de esta edición dedicada a fortalecer la innovación, el aprendizaje y la vinculación universitaria!</p>
       </div>
@@ -265,11 +340,11 @@ header .overlay{
       <div class="card program-card p-3">
         <h5><strong>Tarde</strong></h5>
         16:00 Exposición Proyectos T/V<br>
-        17:00 Coffee Break<br>
-        17:30 Exposición T/V<br>
-        18:00 Conferencia, Dra. Angelina Alarcón<br>
+        17:00 Conferencia, Dra. Angelina Alarcón<br>
         Secretaria Educación Jalisco<br>
-        19:00 Exposición T/V<br>
+        18:00 Coffee Break<br>
+        18:30 Exposición Proyectos T/V<br>
+        19:30 Clausura<br>
         ...
       </div>
     </div>
@@ -367,6 +442,35 @@ header .overlay{
 </div>
 </section>
 
+<!-- Sección: Acerca del Evento -->
+<section id="welcome" class="container mb-5">
+  <div class="backdrop">
+    <h2>Acerca del Evento</h2>
+    <p>
+      Como parte de las iniciativas de divulgación científica del Tecnológico Superior de Jalisco,
+      específicamente de la Unidad Académica Zapopan, nos complace anunciar la realización del
+      <strong>XVIII Concurso de Proyectos de Innovación</strong> y el <strong>Coding Challenge</strong>,
+      organizado por la academia de Sistemas Computacionales.
+    </p>
+    <p>
+      Este evento, programado para los días <strong>3 y 4 de diciembre de 2025</strong>, tiene como objetivo
+      principal fomentar la excelencia académica y la innovación en el campo de las Ciencias de la Computación.
+    </p>
+    <p>
+      El concurso no solo busca que los estudiantes demuestren las competencias adquiridas durante el semestre,
+      sino que también los motiva a aspirar a desarrollar soluciones vanguardistas. Estas soluciones no solo
+      impactarán positivamente en la industria del software, sino que también aspiran a trascender, sirviendo
+      de inspiración para futuras generaciones de profesionales.
+    </p>
+    <p>
+      De esta manera, se espera que los participantes contribuyan significativamente al avance tecnológico,
+      consolidando así el compromiso del Tecnológico Superior de Jalisco Zapopan con la excelencia académica
+      y la formación de profesionales innovadores en el campo de la informática.
+    </p>
+  </div>
+</section>
+
+
 
 <section id="cta-solid" class="mb-5">
 <div class="container">
@@ -450,10 +554,49 @@ header .overlay{
 </section>
 
 
-<footer class="text-center py-4">
-<img src="./assets/img/logotsj.png" width="60"><br>
-<span id="year"></span> ISC Tecnológico Superior de Jalisco Zapopan
+<footer class="footer-tecmm">
+  <div class="footer-container">
+
+    <div class="footer-column">
+      <img src="/assets/img/logotsj.png" alt="Logo TECMM" class="footer-logo">
+      <p>Instituto Tecnológico Superior Zapopan</p>
+     
+    </div>
+
+    <div class="footer-column">
+      <h4>Enlaces Rápidos</h4>
+      <ul>
+        <li><a href="https://www.tecmm.edu.mx/">Inicio</a></li>
+        <li><a href="https://www.tecmm.edu.mx/ofertaEducativa">Oferta Educativa</a></li>
+        <li><a href="https://www.tecmm.edu.mx/noticias">Alumnos</a></li>
+        <li><a href="https://www.tecmm.edu.mx/transparencia">Transparencia</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contacto</h4>
+      <p><strong>Dirección:</strong></p>
+      <p>Cam. Arenero 1101, 45019 Zapopan, Jal.</p>
+      <p><strong>Tel:</strong> 33 3682 1180</p>
+      <p><strong>Email:</strong> ing.sistemas@zapopan.tecmm.edu.mx</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Síguenos</h4>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/groups/isczapopan"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.youtube.com/@TecSJ"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> Academia ISC del TSJ Zapopan – Todos los derechos reservados.</p>
+  </div>
 </footer>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -523,6 +666,10 @@ document.getElementById("prevBtn").onclick = () => {
   currentIndex = (currentIndex - 1 + images.length) % images.length;
   showImage();
 };
+
+const yearSpan = document.getElementById('year');
+if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
 </script>
 
 </body>
