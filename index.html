@@ -82,6 +82,41 @@ header .overlay{
   box-shadow: 0 8px 22px rgba(0,0,0,.25);
 }
 
+.banner-diagonal {
+  position: absolute;
+  top: 220px;                     /* 📌 AJUSTE para bajarlo mucho */
+  left: 50%;
+  transform: translateX(-50%) rotate(-20deg);
+  background: #D10346;
+  color: white;
+  font-weight: 700;
+  padding: 14px 200px;
+  font-size: 1.3rem;
+  z-index: 9999;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  opacity: 0;
+}
+
+/* Fade-in */
+.fade-in {
+  animation: fadeInBanner 1.8s ease-out forwards;
+}
+
+@keyframes fadeInBanner {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) rotate(-20deg) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) rotate(-20deg) translateY(0);
+  }
+}
+
+
+
 /* ========= BIENVENIDA ========= */
 #welcome .backdrop{
   background: rgba(0,0,0,0.45);
@@ -335,6 +370,9 @@ header .overlay{
 
 <header class="hero" id="inicio">
 <div class="overlay"></div>
+<div class="banner-diagonal fade-in">
+  <p>¡Gracias a todos!</p> Nos vemos en la XIX edición del Concurso de Proyectos de Innovación - Primavera 2026
+</div>
 
 <nav class="navbar navbar-expand-lg navbar-dark container py-3">
   <a class="navbar-brand d-flex align-items-center" href="#inicio">
@@ -592,6 +630,12 @@ header .overlay{
     </div>
     <div class="col-6 col-md-3">
       <img src="./assets/img/galeria/g8.png" class="gallery-img rounded" data-index="7">
+    </div>
+    <div class="col-6 col-md-3">
+      <img src="./assets/img/galeria/g9.png" class="gallery-img rounded" data-index="8">
+    </div>
+    <div class="col-6 col-md-3">
+      <img src="./assets/img/galeria/g10.png" class="gallery-img rounded" data-index="9">
     </div>
   </div>
 </section>
