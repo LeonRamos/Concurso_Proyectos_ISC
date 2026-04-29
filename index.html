@@ -1,832 +1,447 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<link rel="shortcut icon" href="./assets/img/logotsj.png" type="image/x-icon">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>XVIII Concurso de Proyectos de Innovación - TSJ Zapopan</title>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="./assets/img/logotsj.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>XIX Concurso de Proyectos de Innovación</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+    :root{
+      --primary:#4b2c8a;   /* morado institucional */
+      --accent:#f6a623;    /* acento institucional */
+      --dark:#1f1f1f;
+      --gray:#6c757d;
+      --bg:#f8f9fb;
+      --radius:16px;
+    }
 
-/* ========= VARIABLES Y TIPOGRAFÍA ========= */
-:root {
-  --tsj-purple: #4b2c8a;
-  --accent: #f6a623;
-  --text-dark: #2d2d2d;
-  --surface: #ffffff;
-  --radius: 14px;
-}
+    body{
+      font-family:'Inter',system-ui,sans-serif;
+      background:var(--bg);
+      color:var(--dark);
+      line-height:1.7;
+    }
 
-html { scroll-behavior: smooth; }
+    h1,h2,h3,h4{font-weight:800;letter-spacing:-0.5px}
 
-body {
-  font-family: "Inter", system-ui, sans-serif;
-  color: var(--text-dark);
-  line-height: 1.65;
-  background: #fafafa;
-}
+    /* ===== NAVBAR ===== */
+    .navbar{
+      backdrop-filter:blur(10px);
+    }
 
-h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.5px; }
+    /* ===== HERO ===== */
+    .hero{
+      min-height:90vh;
+      background:url('./assets/img/banner.png') center/cover no-repeat;
+      position:relative;
+      color:#fff;
+      display:flex;
+      align-items:center;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(33,22,64,.85),rgba(33,22,64,.45));
+    }
+    .hero-content{position:relative;z-index:2}
 
-/* ========= FONDO SVG DINÁMICO ========= */
-.svg-background {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.bg-svg {
-  position: absolute;
-  width: 100px;
-  opacity: 0.09;
-}
+    .hero h1{font-size:clamp(2.4rem,4vw,3.8rem)}
 
-/* ========= HERO ========= */
-.hero-content {
-  position: relative;
-}
+    .btn-primary{
+      background:var(--accent);
+      border:none;
+      color:#000;
+      border-radius:var(--radius);
+      padding:.85rem 2rem;
+      font-weight:700;
+      transition:.3s;
+    }
+    .btn-primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 25px rgba(0,0,0,.25);
+    }
 
-header.hero{
-  position: relative;
-  background-image: url('./assets/img/banner.png');
-  background-size: cover;
-  background-position: center 35%;
-  min-height: 520px;
-  position: relative;
-  color: white;
-  display: flex;
-  align-items: center;
-}
-header .overlay{
-  position:absolute; inset:0;
-  
-  background:linear-gradient(180deg, rgba(33,22,64,.8), rgba(33,22,64,.4));
-}
-.hero-content h1 {
-  font-size: clamp(2.2rem,4vw,3.5rem);
-  font-weight: 800;
-}
-.btn.btn-warning.btn-lg {
-  background: var(--accent);
-  border:none;
-  padding:0.9rem 2rem;
-  border-radius:var(--radius);
-  transition:.25s;
-}
-.btn.btn-warning.btn-lg:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 22px rgba(0,0,0,.25);
-}
+    /* ===== SECCIONES ===== */
+    section{padding:5rem 0}
 
-.banner-diagonal {
-  position: absolute;
-  top: 220px;                     /* 📌 AJUSTE para bajarlo mucho */
-  left: 50%;
-  transform: translateX(-50%) rotate(-20deg);
-  background: #D10346;
-  color: white;
-  font-weight: 700;
-  padding: 14px 200px;
-  font-size: 1.3rem;
-  z-index: 9999;
-  text-align: center;
-  white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-  opacity: 0;
-}
+    .section-title{
+      text-align:center;
+      margin-bottom:3rem;
+    }
+    .section-title p{max-width:720px;margin:auto;color:var(--gray)}
 
-/* Fade-in */
-.fade-in {
-  animation: fadeInBanner 1.8s ease-out forwards;
-}
+    /* ===== CARDS ===== */
+    .card{
+      border:none;
+      border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+    }
 
-@keyframes fadeInBanner {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) rotate(-20deg) translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(-50%) rotate(-20deg) translateY(0);
-  }
-}
+    /* ===== PROGRAMA ===== */
+    .program-time{
+      font-weight:700;color:var(--primary)
+    }
 
+    /* ===== LABS ===== */
+    .lab-card img{
+      border-radius:12px;
+      border:2px solid #e6e6e6;
+    }
 
+    /* ===== PERSONAS ===== */
+    .person-card img{
+      height:220px;object-fit:cover;
+    }
 
-/* ========= BIENVENIDA ========= */
-#welcome .backdrop{
-  background: rgba(0,0,0,0.45);
-  padding: 3rem;
-  border-radius: var(--radius);
-  color:white;
-  backdrop-filter: blur(6px);
-}
+    /* ===== CTA ===== */
+    .cta{
+      background:linear-gradient(90deg,var(--primary),#7f54d8);
+      color:#fff;
+      text-align:center;
+      border-radius:var(--radius);
+      padding:4rem 2rem;
+    }
 
-/* ========= PROGRAMA ========= */
-.program-card{
-  background: var(--surface);
-  border-radius: var(--radius);
-  border:none;
-  box-shadow: 0 4px 14px rgba(0,0,0,.08);
-}
-
-/* Galería de Laboratorios */
-.galeria-section h2 {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #004B8D;
-}
-
-.galeria-section p {
-  font-size: 1rem;
-  color: #444;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.galeria-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
-}
-
-.galeria-item {
-  background: #fff;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.galeria-item:hover {
-  transform: translateY(-5px);
-}
-
-.galeria-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  border: 2px solid #e0e0e0;
-}
-
-.galeria-item h4 {
-  margin-top: 5px;
-  font-size: 1.1rem;
-  color: #333;
-  font-weight: bold;
-}
-
-
-/* ========= SPEAKERS ========= */
-.speaker-card {
-  border-radius: var(--radius);
-  overflow:hidden;
-  border:none;
-  background: var(--surface);
-  transition:.3s;
-}
-.speaker-card img{
-  height:220px;
-  object-fit:cover;
-}
-.speaker-card:hover{
-  transform: translateY(-8px);
-  box-shadow: 0 10px 26px rgba(0,0,0,.18);
-}
-
-/* ========= CTA ========= */
-#cta-solid {
-  background: linear-gradient(90deg, var(--tsj-purple), #7f54d8);
-  color:white;
-  padding:4rem 1rem;
-  text-align:center;
-}
-#cta-solid h1 {
-  font-weight:800;
-  letter-spacing:-0.8px;
-}
-/* ========= GALERY========= */
-.gallery-img {
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.gallery-img:hover {
-  transform: scale(1.03);
-  filter: brightness(1.15);
-}
-
-/* Modal estilo Instagram */
-#galleryModal .modal-content {
-  background: rgba(0,0,0,0.85);
-  border: none;
-}
-
-#galleryModal img {
-  width: 100%;
-  max-height: 85vh;
-  object-fit: contain;
-}
-
-/* ========= ANIMACIÓN DE APARICIÓN ========= */
-.speaker-card, .program-card, #cta-solid, #welcome .backdrop {
-  opacity:0;
-  transform: translateY(20px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-/* ========= EMPRESAS ========= */
-#empresas h2 {
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-
-.empresa-logo {
-  max-height: 75px;
-  width: auto;
-  object-fit: contain;
-  filter: grayscale(0%);
-  opacity: 0.9;
-  transition: .3s;
-}
-
-.empresa-logo:hover {
-  opacity: 1;
-  filter: grayscale(0);
-  transform: scale(1.07);
-}
-
-#labs h2 {
-  font-weight: 700;
-}
-
-#labs h4 {
-  font-weight: 600;
-  color: var(--tsj-purple);
-}
-
-#labs img,
-#labs iframe {
-  border-radius: 12px;
-}
-
-#labs p {
-  font-size: 1.05rem;
-}
-#labs iframe {
-  border-radius: 12px;
-}
-/* ===== FOOTER ESTILO TECMM ===== */
-
-.footer-tecmm {
-  background: #1a1a1a;
-  color: #fff;
-  padding: 50px 20px 0;
-  margin-top: 60px;
-  font-size: 15px;
-}
-
-.footer-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
-  max-width: 1300px;
-  margin: auto;
-  padding-bottom: 40px;
-}
-
-.footer-column h4 {
-  font-size: 17px;
-  margin-bottom: 15px;
-  color: #f3f3f3;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-column ul li {
-  margin: 8px 0;
-}
-
-.footer-column ul li a {
-  color: #ddd;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.footer-column ul li a:hover {
-  color: #00a5e3;
-}
-
-/* Logo */
-.footer-logo {
-  width: 160px;
-  margin-bottom: 10px;
-}
-
-/* Redes */
-.footer-social a {
-  display: inline-block;
-  margin-right: 12px;
-  font-size: 20px;
-  color: #fff;
-  transition: 0.3s;
-}
-
-.footer-social a:hover {
-  color: #00a5e3;
-}
-
-/* Barra inferior */
-.footer-bottom {
-  background: #111;
-  text-align: center;
-  padding: 12px 0;
-  margin-top: 25px;
-  font-size: 14px;
-  border-top: 1px solid #333;
-}
-
-
-</style>
+    /* ===== FOOTER ===== */
+    footer{
+      background:#111;color:#ddd
+    }
+    footer a{color:#bbb;text-decoration:none}
+    footer a:hover{color:#fff}
+  </style>
 </head>
 
 <body>
 
-<div id="svg-bg" class="svg-background"></div>
-
-<header class="hero" id="inicio">
-<div class="overlay"></div>
-<div class="banner-diagonal fade-in">
-  <p>¡Gracias a todos!</p> Nos vemos en la XIX edición del Concurso de Proyectos de Innovación - Primavera 2026
-</div>
-
-<nav class="navbar navbar-expand-lg navbar-dark container py-3">
-  <a class="navbar-brand d-flex align-items-center" href="#inicio">
-    <img src="./assets/img/logotsj.png" width="48" height="48" class="me-2">
-    <div>
-      <div style="font-size:14px;opacity:.9">Tecnológico Superior de Jalisco Zapopan</div>
-      <strong style="font-size:18px">Concurso de Proyectos de Innovación</strong>
-    </div>
-  </a>
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="./assets/img/logotsj.png" width="42" class="me-2">
+      <strong>Concurso de Proyectos de Innovación</strong>
+    </a>
+  </div>
 </nav>
 
-<div class="container hero-content">
-  <h1 class="text-white">XVIII Concurso de Proyectos de Innovación</h1>
-  <p class="lead">“La innovación distingue a un líder de un seguidor.” — Steve Jobs.</p>
-  <a href="#proyectos" class="btn btn-warning btn-lg">Ver programa</a>
-</div>
+<!-- HERO -->
+<header class="hero" id="inicio">
+  <div class="container hero-content">
+    <h1 class="mb-3">XIX Concurso de Proyectos de Innovación</h1>
+    <p class="lead mb-4">Un espacio académico para mostrar creatividad, tecnología e impacto social.</p>
+    <a href="#programa" class="btn btn-primary btn-lg">Ver programa</a>
+  </div>
 </header>
 
-
-<main class="mt-5">
-
-<section id="welcome" class="container mb-5">
-  <div class="backdrop">
-    <h1>Bienvenida</h1>
-    <p>¡Sean todas y todos bienvenidos a la <strong>XVIII edición del Concurso de Innovación de Proyectos</strong> del Tecnológico Superior de Jalisco Zapopan!</p> 
-        <p>Este evento se celebra de forma semestral y convoca a <strong>alumnos, docentes y empresas</strong> del área de TI para reconocer el talento y la creatividad en el desarrollo de proyectos realizados por estudiantes durante el semestre. El concurso destaca la capacidad de nuestros alumnos para aplicar sus conocimientos y competencias en la resolución de <em>problemáticas reales</em> presentes en sus comunidades locales.</p> 
-        <p>El Concurso de proyectos ofrece un espacio de encuentro y aprendizaje, donde los participantes presentan soluciones innovadoras, comparten experiencias, y reciben retroalimentación directa de especialistas, docentes y representantes del sector productivo. Las empresas participantes tienen la oportunidad de conocer ideas emergentes, vincularse con nuevos talentos y apoyar la formación profesional de nuestros estudiantes.</p> 
-        <p>Queremos promover el espíritu de colaboración, el compromiso social y la búsqueda constante de la excelencia. Te invitamos a sumarte y ser partícipe de esta jornada, explorar los proyectos presentados y descubrir los beneficios que genera la participación conjunta en este inspirador evento académico y tecnológico.</p> 
-        <p>¡Gracias por ser parte de esta edición dedicada a fortalecer la innovación, el aprendizaje y la vinculación universitaria!</p>
-      </div>
-</section>
-
-
-<section id="proyectos" class="container mb-5">
-  <h2 class="mb-4">Programa | 3 - Diciembre - 2025</h2>
-  <div class="row gy-4">
-
-    <div class="col-md-6">
-      <div class="card program-card p-3">
-        <h5><strong>Mañana</strong></h5>
-        <strong>09:00</strong> Inauguración<br>
-        <strong>09:30</strong> Exposición Proyectos T/M<br>
-        <strong>10:00</strong> PITCH 1: "Tat Manager" | Laboratorio "LIA" <br>
-              Mentor: Code Nation<br>
-        <strong>10:10</strong> Coffee Brake <br>
-        <strong>10:15</strong> Exposición Proyectos T/M<br>
-        <strong>11:00</strong> PITCH 2: "SalvEat" | Laboratorio "LIA"<br>
-              Mentor: Code Nation<br>
-        <strong>11:15</strong> Entrega Constancias de Participación<br>
-        <strong>11:30</strong> Toma Fotografia Evento Edificio "L"<br>
-
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="card program-card p-3">
-        <h5><strong>Tarde</strong></h5>
-        <strong>16:00</strong> Exposición Proyectos T/V<br>
-        <strong>17:00</strong> Conferencia, Dra. Angelina Alarcón<br>
-        Secretaria Educación Jalisco<br>
-        <strong>18:00</strong> Coffee Break<br>
-        <strong>18:15</strong> Exposición Proyectos T/V<br>
-        <strong>19:30</strong> Clausura<br>
-        <strong>19:40</strong> Entrega Constancias de Participación<br>
-        <strong>20:00 </strong>Toma Fotografia Evento Edificio "L"<br>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="text-center my-4">
-  <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#posterModal">
+<div class="text-center my-5">
+  <button class="btn btn-primary btn-lg"
+          data-bs-toggle="modal"
+          data-bs-target="#posterModal">
+    <i class="fa-solid fa-image me-2"></i>
     Ver póster del evento
   </button>
 </div>
 
-<section id="galeria-labs" class="galeria-section container my-5">
-  <h2 class="text-center mb-4">Ganadores del Turno Matutino | Premiación – Miércoles 10 de diciembre, 10:00 am</h2>
-  <p class="text-center mb-5">
-    
-  </p>
-
-  <div class="galeria-grid">
-    <div class="galeria-item">
-      <img src="assets/img/labs/PMAT.gif" alt="Laboratorio LIA">
-      <h4>¡Ganadores!</h4>
+<!-- BIENVENIDA -->
+<section id="bienvenida">
+  <div class="container">
+    <div class="section-title">
+      <h2>Bienvenidas y Bienvenidos</h2>
+      <p>Evento académico semestral que promueve la innovación, la vinculación y el aprendizaje basado en proyectos.</p>
+    </div>
+    <div class="card p-4 p-md-5">
+      <p>El Concurso de Proyectos de Innovación del Instituto Tecnológico José Mario Molina Pasquel y Henríquez UA Zapopan reúne a estudiantes, docentes y sector productivo para presentar soluciones tecnológicas a problemáticas reales.</p>
+      <p>Este espacio fomenta la creatividad, el trabajo colaborativo y la retroalimentación experta.</p>
     </div>
   </div>
 </section>
 
-
-<section id="galeria-labs" class="galeria-section container my-5">
-  <h2 class="text-center mb-4">Ganadores del Turno Vespertino | Premiación – Miércoles 10 de diciembre, 17:00 pm</h2>
-  <p class="text-center mb-5">
-    
-  </p>
-
-  <div class="galeria-grid">
-    <div class="galeria-item">
-      <img src="assets/img/labs/PVES.gif" alt="Laboratorio LIAT">
-      <h4>¡Ganadores!</h4>
+<!-- PROGRAMA -->
+<section id="programa" class="bg-white">
+  <div class="container">
+    <div class="section-title">
+      <h2>Programa del Evento</h2>
+      <p>20 de mayo de 2026</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card p-4 h-100">
+          <h4>Mañana</h4>
+          <p><span class="program-time">09:00</span> Inauguración</p>
+          <p><span class="program-time">09:20</span> Exposición de proyectos</p>
+          <p><span class="program-time">10:00</span> Coffee Break</p>
+          <p><span class="program-time">11:40</span> Entrega Reconocimientos</p>
+          <p><span class="program-time">12:20</span> Toma Fotografia Evento Edificio "L"</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-4 h-100">
+          <h4>Vespertino</h4>
+          <p><span class="program-time">18:00</span> Exposición de proyectos</p>
+          <p><span class="program-time">19:00</span> Coffee Break</p>
+          <p><span class="program-time">20:00</span> Entrega Reconocimientos</p>
+          <p><span class="program-time">20:30</span> Toma Fotografia Evento Edificio "L"</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="organizadores" class="container mb-5">
-<h2 class="mb-4">Organizadores, colaboradores e invitados</h2>
-<div class="row g-4">
-
-<div class="col-sm-6 col-md-4 col-lg-3">
-  <div class="card speaker-card">
-    <img src="./assets/img/c0rd1.png">
-    <div class="card-body">
-      <h5>Coordinadores</h5>
-      <p class="small">Academia ISC</p>
+<!-- LABORATORIOS -->
+<section id="labs">
+  <div class="container">
+    <div class="section-title">
+      <h2>Distribución de Laboratorios</h2>
+      <p>Asignación de proyectos por laboratorio</p>
     </div>
-  </div>
-</div>
-
-<!-- Repite igual para los demás -->
-<div class="col-sm-6 col-md-4 col-lg-3">
-  <div class="card speaker-card">
-    <img src="./assets/img/c0l4.png">
-    <div class="card-body">
-      <h5>Colaboradores</h5>
-      <p class="small">Academia ISC</p>
-    </div>
-  </div>
-</div>
-
-<div class="col-sm-6 col-md-4 col-lg-3">
-  <div class="card speaker-card">
-    <img src="./assets/img/1741719267389.png">
-    <div class="card-body">
-      <h5>C. Gutierrez Camarena Gina</h5>
-      <p class="small">SOFTSERVE</p>
-    </div>
-  </div>
-</div>
-
-<div class="col-sm-6 col-md-4 col-lg-3">
-  <div class="card speaker-card">
-    <img src="./assets/img/1730166035765.png">
-    <div class="card-body">
-      <h5>C. Guzman Vazquez Erandi Anaid</h5>
-      <p class="small">SOFTSERVE</p>
-    </div>
-  </div>
-</div>
-
-<div class="col-sm-6 col-md-4 col-lg-3">
-  <div class="card speaker-card">
-    <img src="./assets/img/1695307461447.png">
-    <div class="card-body">
-      <h5>C. Mendoza Yepiz Luis Mariano</h5>
-      <p class="small">Zegnal Consultings|SAP</p>
-    </div>
-  </div>
-</div>
-
-
-<div class="col-sm-6 col-md-4 col-lg-3">
-  <div class="card speaker-card">
-    <img src="./assets/img/1573575601581.png">
-    <div class="card-body">
-      <h5>C. Martinez Palacios Joel</h5>
-      <p class="small">CodeNation|Intel</p>
-    </div>
-  </div>
-</div>
-
-<div class="col-sm-6 col-md-4 col-lg-3">
-  <div class="card speaker-card">
-    <img src="./assets/img/1731100254822.jpeg">
-    <div class="card-body">
-      <h5>C. Martinez Marmolejo Francisco</h5>
-      <p class="small">CodeNation|Intel</p>
-    </div>
-  </div>
-</div>
-
-<div class="col-sm-6 col-md-4 col-lg-3">
-  <div class="card speaker-card">
-    <img src="./assets/img/16953074614314.png">
-    <div class="card-body">
-      <h5>C. Alarcón Romero Ma. Angelina</h5>
-      <p class="small">Educación Jalisco</p>
-    </div>
-  </div>
-</div>
-
-</div>
-</section>
-
-<!-- Sección: Acerca del Evento -->
-<section id="welcome" class="container mb-5">
-  <div class="backdrop">
-    <h2>Acerca del Evento</h2>
-    <p>
-      Como parte de las iniciativas de divulgación científica del Tecnológico Superior de Jalisco,
-      específicamente de la Unidad Académica Zapopan, nos complace anunciar la realización del
-      <strong>XVIII Concurso de Proyectos de Innovación</strong> y el <strong>Coding Challenge</strong>,
-      organizado por la academia de Sistemas Computacionales.
-    </p>
-    <p>
-      Este evento, programado para los días <strong>3 y 4 de diciembre de 2025</strong>, tiene como objetivo
-      principal fomentar la excelencia académica y la innovación en el campo de las Ciencias de la Computación.
-    </p>
-    <p>
-      El concurso no solo busca que los estudiantes demuestren las competencias adquiridas durante el semestre,
-      sino que también los motiva a aspirar a desarrollar soluciones vanguardistas. Estas soluciones no solo
-      impactarán positivamente en la industria del software, sino que también aspiran a trascender, sirviendo
-      de inspiración para futuras generaciones de profesionales.
-    </p>
-    <p>
-      De esta manera, se espera que los participantes contribuyan significativamente al avance tecnológico,
-      consolidando así el compromiso del Tecnológico Superior de Jalisco Zapopan con la excelencia académica
-      y la formación de profesionales innovadores en el campo de la informática.
-    </p>
-  </div>
-</section>
-
-
-
-<section id="cta-solid" class="mb-5">
-<div class="container">
-<h1>¡Nos vemos el miércoles 3 de diciembre!</h1>
-</div>
-</section>
-<section id="galeria" class="container mb-5">
-  <h2 class="mb-4 text-center">Grandes Momentos</h2>
-
-  <div class="row g-2">
-    <div class="col-6 col-md-3">
-      <img src="./assets/img/galeria/g1.png" class="gallery-img rounded" data-index="0">
-    </div>
-    <div class="col-6 col-md-3">
-      <img src="./assets/img/galeria/g2.png" class="gallery-img rounded" data-index="1">
-    </div>
-    <div class="col-6 col-md-3">
-      <img src="./assets/img/galeria/g3.png" class="gallery-img rounded" data-index="2">
-    </div>
-    <div class="col-6 col-md-3">
-      <img src="./assets/img/galeria/g4.png" class="gallery-img rounded" data-index="3">
-    </div>
-    <div class="col-6 col-md-3">
-      <img src="./assets/img/galeria/g5.png" class="gallery-img rounded" data-index="4">
-    </div>
-    <div class="col-6 col-md-3">
-      <img src="./assets/img/galeria/g6.png" class="gallery-img rounded" data-index="5">
-    </div>
-    <div class="col-6 col-md-3">
-      <img src="./assets/img/galeria/g7.png" class="gallery-img rounded" data-index="6">
-    </div>
-    <div class="col-6 col-md-3">
-      <img src="./assets/img/galeria/g8.png" class="gallery-img rounded" data-index="7">
-    </div>
-    <div class="col-6 col-md-3">
-      <img src="./assets/img/galeria/g9.png" class="gallery-img rounded" data-index="8">
-    </div>
-    <div class="col-6 col-md-3">
-      <img src="./assets/img/galeria/g10.png" class="gallery-img rounded" data-index="9">
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-4">
+        <div class="card lab-card p-3 text-center">
+          <img src="assets/img/labs/proximamente.png" class="img-fluid mb-3">
+          <h5>Laboratorio LIA</h5>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card lab-card p-3 text-center">
+          <img src="assets/img/labs/proximamente.png" class="img-fluid mb-3">
+          <h5>Laboratorio LTE</h5>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card lab-card p-3 text-center">
+          <img src="assets/img/labs/proximamente.png" class="img-fluid mb-3">
+          <h5>Laboratorio LIS</h5>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-</main>
-<section id="empresas" class="container my-5">
-  <h2 class="text-center mb-4">Empresas Aliadas</h2>
+<!-- SEDE DEL EVENTO -->
+<section id="sede" class="bg-white">
+  <div class="container">
+    <div class="section-title">
+      <h2>Sede del Evento</h2>
+      <p>Unidad Académica Zapopan – Edificio L</p>
+    </div>
 
-  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
-    <img src="./assets/img/logos/Recurso 1.png" class="empresa-logo" alt="SoftServe">
-    <img src="./assets/img/logos/23465675.png" class="empresa-logo" alt="Zegnal Consulting">
-    <img src="./assets/img/logos/34243242.png" class="empresa-logo" alt="CodeNation">
-    <img src="./assets/img/logos/86854456.png" class="empresa-logo" alt="Intel">
-    <img src="./assets/img/logos/678576432.png" class="empresa-logo" alt="Secretaría de Educación Jalisco">
+    <div class="row g-4 align-items-center">
+      <div class="col-md-6">
+        <h4>Mapa de la Unidad Académica</h4>
+        <p>Edificio L, sede del evento, perteneciente a la Academia de Ingeniería en Sistemas Computacionales.</p>
+        <img src="./assets/img/labs-ubicacion.jpg"
+             alt="Plano de la sede del evento"
+             class="img-fluid rounded shadow-sm w-100">
+      </div>
+
+      <div class="col-md-6">
+        <h4>Ubicación</h4>
+        <p>Camino Arenero 1101, Zapopan, Jalisco.</p>
+        <div class="ratio ratio-4x3 rounded shadow-sm overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9531.985587338153!2d-103.46917204999999!3d20.705047999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428a92008505ae3%3A0xac0da90d95e836af!2sTecnol%C3%B3gico%20Superior%20de%20Jalisco%20Zapopan!5e0!3m2!1ses!2smx!4v1730899030301!5m2!1ses!2smx"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="labs" class="container my-5">
-  <h2 class="text-center mb-4">Sede del Evento</h2>
-
-  <div class="row g-4">
-
-    <div class="col-md-6">
-      <h4>Mapa Unidad Académica Zapopan</h4>
-      <p>Edificio L - Sede del evento perteneciente a la Academia de Ingeniería en Sistemas Computacionales.</p>
-
-      <img src="./assets/img/labs-ubicacion.jpg"
-        alt="Plano de laboratorios"
-        class="img-fluid rounded shadow-sm w-100">
+<!-- ORGANIZADORES -->
+<section id="organizadores" class="bg-white">
+  <div class="container">
+    <div class="section-title">
+      <h2>Organizadores</h2>
+      <p>Equipo académico responsable del evento</p>
     </div>
-
-    <div class="col-md-6">
-      <h4>Ubicación</h4>
-      <p>Camino Arenero 1101, Zapopan, Jalisco.</p>
-
-     <div class="ratio ratio-4x3 rounded shadow-sm overflow-hidden">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9531.985587338153!2d-103.46917204999999!3d20.705047999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428a92008505ae3%3A0xac0da90d95e836af!2sTecnol%C3%B3gico%20Superior%20de%20Jalisco%20Zapopan!5e0!3m2!1ses!2smx!4v1730899030301!5m2!1ses!2smx"
-    style="border:0;"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<footer class="footer-tecmm">
-  <div class="footer-container">
-
-    <div class="footer-column">
-      <img src="https://enlinea.tsj.mx/wp-content/uploads/2023/05/logo-primario_Mesa-de-trabajo-1-1-1.png" alt="Logo TECMM" class="footer-logo">
-      <p>Instituto Tecnológico Superior Zapopan</p>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3">
+        <div class="card person-card">
+          <img src="https://media.licdn.com/dms/image/v2/D5603AQH3dgWCnuIPkg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1665623758974?e=1778716800&v=beta&t=kVa_QnWm6FhmqTzWfXEXHwJr13-jip00t20ejGYkq_k" class="w-100">
+          <div class="card-body text-center">
+            <h6>Nancy Ruiz Monroy</h6>
+            <small>Coordinadora</small>
+          </div>
+        </div>
+      </div>
      
+       <div class="col-sm-6 col-lg-3">
+        <div class="card person-card">
+          <img src="https://media.licdn.com/dms/image/v2/D4D03AQGdtXhLSwE-Og/profile-displayphoto-crop_800_800/B4DZ3Aq36aJYAI-/0/1777053962245?e=1778716800&v=beta&t=5b_496PRGij4gSfBLU9RObg34l-3R8bvCK6c00WS6hQ" class="w-100">
+          <div class="card-body text-center">
+            <h6>León Miguel Ramos Corchado</h6>
+            <small>Coordinador</small>
+          </div>
+        </div>
+      </div>
+       <div class="col-sm-6 col-lg-3">
+        <div class="card person-card">
+          <img src="https://media.licdn.com/dms/image/v2/C4E03AQGTgMv8xSIdGg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1517541339967?e=1778716800&v=beta&t=xoPBfS1fX2K6hg9D2Zo7egCK0_ETHzEsFiuFbAl701k" class="w-100">
+          <div class="card-body text-center">
+            <h6>Fábian Gonzalez Torres</h6>
+            <small>Coordinador</small>
+          </div>
+        </div>
+      </div>
+       <div class="col-sm-6 col-lg-3">
+        <div class="card person-card">
+          <img src="https://yt3.googleusercontent.com/ytc/AIdro_kx7hi4h2Pzf-NCgV3KmNFRuOnmuJ1lCjLzQcCHapNn6Q=s160-c-k-c0x00ffffff-no-rj" class="w-100">
+          <div class="card-body text-center">
+            <h6>Fabiola López Huezo</h6>
+            <small>Colaboradora</small>
+          </div>
+        </div>
+      </div>
+       <div class="col-sm-6 col-lg-3">
+        <div class="card person-card">
+          <img src="data:image/jpeg;base64,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" class="w-100">
+          <div class="card-body text-center">
+            <h6>José Luis Garcia Cerpas</h6>
+            <small>Colaborador</small>
+          </div>
+        </div>
+      </div>
+       <div class="col-sm-6 col-lg-3">
+        <div class="card person-card">
+          <img src="https://media.licdn.com/dms/image/v2/C4E03AQHavBSvhWhEHw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516873864015?e=1778716800&v=beta&t=-aplgoKhU5nlMJQ3p_GXAv9H9A5uCGtCsnTiWfj3IOY" class="w-100">
+          <div class="card-body text-center">
+            <h6>Quinatzin Reyes Gómez</h6>
+            <small>Colaborador</small>
+          </div>
+        </div>
+      </div>
+       <div class="col-sm-6 col-lg-3">
+        <div class="card person-card">
+          <img src="https://static.wixstatic.com/media/c47a95_cd3e0ab265274b0e91729727b7ef46d2~mv2.jpg/v1/crop/x_138,y_13,w_600,h_1253/fill/w_600,h_1252,al_c,q_85,enc_avif,quality_auto/Foto_FedericoArmandoAriasZambrano_edited.jpg" class="w-100">
+          <div class="card-body text-center">
+            <h6>Federico Armando Arias Zambrano</h6>
+            <small>Colaborador</small>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="footer-column">
-      <h4>Enlaces Rápidos</h4>
-      <ul>
-        <li><a href="https://www.tecmm.edu.mx/">Inicio</a></li>
-        <li><a href="https://www.tecmm.edu.mx/ofertaEducativa">Oferta Educativa</a></li>
-        <li><a href="https://www.tecmm.edu.mx/noticias">Alumnos</a></li>
-        <li><a href="https://www.tecmm.edu.mx/transparencia">Transparencia</a></li>
-      </ul>
+<!-- EMPRESAS ALIADAS -->
+<section id="aliados" class="bg-white">
+  <div class="container">
+    <div class="section-title">
+      <h2>Empresas Aliadas</h2>
+      <p>Organizaciones que apoyan e impulsan la innovación académica</p>
     </div>
-
-    <div class="footer-column">
-      <h4>Contacto</h4>
-      <p><strong>Dirección:</strong></p>
-      <p>Cam. Arenero 1101, 45019 Zapopan, Jal.</p>
-      <p><strong>Tel:</strong> 33 3682 1180</p>
-      <p><strong>Email:</strong> ing.sistemas@zapopan.tecmm.edu.mx</p>
+    <div class="row g-4 align-items-center justify-content-center">
+      <div class="col-6 col-md-3 text-center">
+        <img src="./assets/img/logos/86854456.png" class="img-fluid" alt="SoftServe">
+      </div>
+      <div class="col-6 col-md-3 text-center">
+        <img src="./assets/img/logos/Recurso 1.png" class="img-fluid" alt="Zegnal Consulting">
+      </div>
+      <div class="col-6 col-md-3 text-center">
+        <img src="./assets/img/logos/34243242.png" class="img-fluid" alt="CodeNation">
+      </div>
+      <div class="col-6 col-md-3 text-center">
+        <img src="./assets/img/logos/47993983.png" class="img-fluid" alt="Secretaría de Educación Jalisco">
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="footer-column">
-      <h4>Síguenos</h4>
-      <div class="footer-social">
-        <a href="https://www.facebook.com/groups/isczapopan"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.youtube.com/@TecSJ"><i class="fab fa-youtube"></i></a>
+<!-- CTA -->
+<section class="container">
+  <div class="cta">
+    <h2 class="mb-3">¡Participa y conoce los proyectos!</h2>
+    <p class="mb-4">Innovación, tecnología y talento estudiantil en un solo evento.</p>
+    <a href="#inicio" class="btn btn-primary btn-lg">Volver al inicio</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <img src="./assets/img/logotsj.png" width="60" class="mb-3">
+        <p class="mb-0">Instituto Tecnológico José Mario Molina Pasquel y Henríquez</p>
+        <small>Unidad Académica Zapopan</small>
+      </div>
+
+      <div class="col-md-4">
+        <h6>Evento</h6>
+        <ul class="list-unstyled">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#programa">Programa</a></li>
+          <li><a href="#labs">Laboratorios</a></li>
+          <li><a href="#organizadores">Organizadores</a></li>
+          <li><a href="#aliados">Empresas aliadas</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <h6>Contacto</h6>
+        <p><strong>Dirección:</strong></p>
+        <p>Cam. Arenero 1101, 45019 Zapopan, Jal.</p>
+        <p><strong>Tel:</strong> 33 3682 1180</p>
+        <p><strong>Email:</strong> ing.sistemas@zapopan.tecmm.edu.mx</p>
+        <div class="mt-2">
+          <a href="https://www.facebook.com/groups/isczapopan" class="me-3"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.instagram.com/tsjzapopan/" class="me-3"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+        </div>
       </div>
     </div>
 
-  </div>
-
-  <div class="footer-bottom">
-    <p>© <span id="year"></span> Academia ISC del TSJ Zapopan – Todos los derechos reservados.</p>
+    <hr class="my-4">
+    <div class="text-center">
+      <small>© 2026 Tecnológico Superior de Jalisco. Todos los derechos reservados.</small>
+    </div>
   </div>
 </footer>
 
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* Animación de aparición */
-const reveal = () => {
-  document.querySelectorAll('.speaker-card, .program-card, #cta-solid, #welcome .backdrop')
-    .forEach(el => { el.style.opacity = 1; el.style.transform = "translateY(0)";});
-};
-window.addEventListener('load', reveal);
-
-/* Fondo SVG dinámico */
-const cont = document.getElementById('svg-bg');
-const svgs = ["f1.svg","f2.svg","f3.svg","f4.svg","f5.svg"];
-for(let i=0;i<18;i++){
-  const img = document.createElement("img");
-  img.src = `./assets/svg/${svgs[Math.floor(Math.random()*svgs.length)]}`;
-  img.className = "bg-svg";
-  img.style.top = Math.random()*95 + "%";
-  img.style.left = Math.random()*95 + "%";
-  cont.appendChild(img);
-}
-</script>
-<div class="modal fade" id="galleryModal" tabindex="-1">
-  <div class="modal-dialog modal-fullscreen-sm-down modal-lg modal-dialog-centered">
-    <div class="modal-content text-center">
-      <div class="modal-body p-0 position-relative">
-        <img id="galleryModalImg" src="">
-        <button id="prevBtn" class="btn btn-light position-absolute top-50 start-0 translate-middle-y">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button id="nextBtn" class="btn btn-light position-absolute top-50 end-0 translate-middle-y">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<script>
-const images = document.querySelectorAll(".gallery-img");
-const modalImg = document.getElementById("galleryModalImg");
-let currentIndex = 0;
-
-images.forEach(img => {
-  img.addEventListener("click", () => {
-    currentIndex = parseInt(img.dataset.index);
-    showImage();
-    new bootstrap.Modal(document.getElementById('galleryModal')).show();
-  });
-});
-
-function showImage() {
-  modalImg.src = images[currentIndex].src;
-}
-
-document.getElementById("nextBtn").onclick = () => {
-  currentIndex = (currentIndex + 1) % images.length;
-  showImage();
-};
-
-document.getElementById("prevBtn").onclick = () => {
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  showImage();
-};
-
-const yearSpan = document.getElementById('year');
-if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-</script>
-
-<!-- Modal para ver el póster -->
-<div class="modal fade" id="posterModal" tabindex="-1" aria-labelledby="posterModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
+</body>
+<!-- Modal: Póster del evento -->
+<div class="modal fade" id="posterModal" tabindex="-1"
+     aria-labelledby="posterModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
+
       <div class="modal-header">
-        <h5 class="modal-title">Póster del evento</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        <h5 class="modal-title" id="posterModalLabel">
+          Póster – XIX Concurso de Proyectos de Innovación
+        </h5>
+        <button type="button" class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Cerrar"></button>
       </div>
-      <div class="modal-body p-0" style="height: 80vh;">
-        <iframe 
-          src="assets/pdf/poster.pdf"
-          style="width:100%; height:100%; border:none;">
+
+      <div class="modal-body p-0" style="height:80vh;">
+        <iframe
+          src="./assets/pdf/poster.pdf"
+          style="width:100%; height:100%; border:none;"
+          loading="lazy">
         </iframe>
       </div>
+
       <div class="modal-footer">
-        <a href="assets/pdf/poster.pdf" target="_blank" class="btn btn-success">
+        <a href="./assets/pdf/poster.pdf"
+           target="_blank"
+           class="btn btn-outline-secondary">
+          <i class="fa-solid fa-up-right-from-square me-1"></i>
           Abrir en nueva pestaña
         </a>
       </div>
+
     </div>
   </div>
 </div>
-
-
-</body>
 </html>
