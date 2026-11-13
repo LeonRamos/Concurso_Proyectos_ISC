@@ -493,7 +493,7 @@
                          <th>Hora</th>
                          <th>Turno</th>
                          <th>Nombre del Proyecto</th>
-                         <th>Equipo / Estudiantes</th>
+                         
                      </tr>
                  </thead>
                  <tbody id="tabla-lia">
@@ -512,7 +512,7 @@
                          <th>Hora</th>
                          <th>Turno</th>
                          <th>Nombre del Proyecto</th>
-                         <th>Equipo / Estudiantes</th>
+                         
                      </tr>
                  </thead>
                  <tbody id="tabla-lte"></tbody>
@@ -529,7 +529,7 @@
                          <th>Hora</th>
                          <th>Turno</th>
                          <th>Nombre del Proyecto</th>
-                         <th>Equipo / Estudiantes</th>
+                         
                      </tr>
                  </thead>
                  <tbody id="tabla-lis"></tbody>
@@ -546,7 +546,7 @@
                          <th>Hora</th>
                          <th>Turno</th>
                          <th>Nombre del Proyecto</th>
-                         <th>Equipo / Estudiantes</th>
+                         
                      </tr>
                  </thead>
                  <tbody id="tabla-lds"></tbody>
@@ -563,7 +563,7 @@
                          <th>Hora</th>
                          <th>Turno</th>
                          <th>Nombre del Proyecto</th>
-                         <th>Equipo / Estudiantes</th>
+                         
                      </tr>
                  </thead>
                  <tbody id="tabla-lti"></tbody>
@@ -580,7 +580,7 @@
                          <th>Hora</th>
                          <th>Turno</th>
                          <th>Nombre del Proyecto</th>
-                         <th>Equipo / Estudiantes</th>
+                         
                      </tr>
                  </thead>
                  <tbody id="tabla-lrd"></tbody>
@@ -816,60 +816,89 @@
     }
   }, 1000);
 </script>
-
+// Consume datos de Google Sheets y los muestra en las tablas de cada laboratorio
 <script>
-// Cuando tengas tu Excel, lo conviertes a un formato similar a este:
-const proyectosData = {
-    "lia": [
-        { hora: "09:20 - 09:40", turno: "Matutino", nombre: "App de Realidad Aumentada para Anatomía", equipo: "TechMed (Juan P., María C.)" },
-        { hora: "09:40 - 10:00", turno: "Matutino", nombre: "Sistema de Control de Invernaderos (IoT)", equipo: "GreenCode" },
-        { hora: "16:00 - 16:20", turno: "Vespertino", nombre: "Plataforma de Tutorías Estudiantiles", equipo: "EduConnect" }
-    ],
-    "lte": [
-        { hora: "09:20 - 09:40", turno: "Matutino", nombre: "Análisis de Tráfico con Visión Artificial", equipo: "Visionarys" },
-        { hora: "16:20 - 16:40", turno: "Vespertino", nombre: "Videojuego Educativo de Historia de México", equipo: "PixelPioneros" }
-    ],
-    "lis": [], // Vacío por ahora
-    "lds": [
-         { hora: "10:20 - 10:40", turno: "Matutino", nombre: "Dashboard de Finanzas Personales", equipo: "FinTech Team" }
-    ],
-    "lti": [],
-    "lrd": []
-};
+const SHEET_ID = '1zUIv1oKyiaQM_aaxYeZkN6t6yS5LQ5CzUvNdr8OrWVg';
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
-// Función para inyectar los datos en el HTML
-function cargarProyectos() {
-    // Recorrer las claves del objeto (lia, lte, lis, etc.)
-    for (const lab in proyectosData) {
+async function cargarProyectosDesdeSheet() {
+    const laboratorios = ['lia', 'lte', 'lis', 'lds', 'lti', 'lrd'];
+    
+    const proyectosData = {};
+    laboratorios.forEach(lab => proyectosData[lab] = []);
+
+    laboratorios.forEach(lab => {
         const tbody = document.getElementById(`tabla-${lab}`);
-        const proyectos = proyectosData[lab];
-
-        // Si el contenedor existe
         if (tbody) {
-            tbody.innerHTML = ''; // Limpiar contenido previo
+            tbody.innerHTML = `<tr><td colspan="3" class="text-center text-muted py-4">Cargando proyectos...</td></tr>`;
+        }
+    });
 
-            if (proyectos.length === 0) {
-                // Mensaje si no hay proyectos registrados aún
-                tbody.innerHTML = `<tr><td colspan="4" class="text-center text-muted py-4"><em>Aún no hay proyectos asignados a este laboratorio.</em></td></tr>`;
-            } else {
-                // Crear una fila por cada proyecto
-                proyectos.forEach(proyecto => {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td class="hora-col">${proyecto.hora}</td>
-                        <td><span class="badge ${proyecto.turno === 'Matutino' ? 'bg-primary' : 'bg-secondary'}">${proyecto.turno}</span></td>
-                        <td class="fw-bold">${proyecto.nombre}</td>
-                        <td>${proyecto.equipo}</td>
-                    `;
-                    tbody.appendChild(tr);
+    try {
+        const response = await fetch(SHEET_URL);
+        const text = await response.text();
+        
+        const jsonString = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
+        const data = JSON.parse(jsonString);
+        const rows = data.table.rows;
+
+        rows.forEach(row => {
+            if (!row.c) return;
+
+            const lab = row.c[0]?.v ? row.c[0].v.toString().trim().toLowerCase() : '';
+            const turno = row.c[1]?.v ? row.c[1].v.toString().trim() : '';
+            const hora = row.c[2]?.f || (row.c[2]?.v ? row.c[2].v.toString().trim() : '');
+            const proyecto = row.c[3]?.v ? row.c[3].v.toString().trim() : '';
+
+            if (lab === 'laboratorio' || !lab) return;
+
+            if (proyectosData[lab]) {
+                proyectosData[lab].push({
+                    hora: hora,
+                    turno: turno,
+                    nombre: proyecto
                 });
             }
-        }
+        });
+
+        laboratorios.forEach(lab => {
+            const tbody = document.getElementById(`tabla-${lab}`);
+            const proyectos = proyectosData[lab];
+
+            if (tbody) {
+                tbody.innerHTML = '';
+
+                if (proyectos.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="3" class="text-center text-muted py-4"><em>Aún no hay proyectos asignados a este laboratorio.</em></td></tr>`;
+                } else {
+                    proyectos.forEach(proyecto => {
+                        const isManana = proyecto.turno.toLowerCase().includes('mañana') || proyecto.turno.toLowerCase().includes('matutino');
+                        const badgeClass = isManana ? 'bg-primary' : 'bg-secondary';
+
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td class="hora-col">${proyecto.hora}</td>
+                            <td><span class="badge ${badgeClass}">${proyecto.turno}</span></td>
+                            <td class="fw-bold">${proyecto.nombre}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
+            }
+        });
+
+    } catch (error) {
+        console.error('Error al cargar los datos de Google Sheets:', error);
+        laboratorios.forEach(lab => {
+            const tbody = document.getElementById(`tabla-${lab}`);
+            if (tbody) {
+                tbody.innerHTML = `<tr><td colspan="3" class="text-center text-danger py-4">Error al cargar los datos. Verifica que la hoja sea pública.</td></tr>`;
+            }
+        });
     }
 }
 
-// Ejecutar la función cuando el documento (DOM) esté listo
-document.addEventListener('DOMContentLoaded', cargarProyectos);
+document.addEventListener('DOMContentLoaded', cargarProyectosDesdeSheet);
 </script>
 
 <div class="modal fade" id="posterModal" tabindex="-1"
