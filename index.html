@@ -129,11 +129,40 @@
       font-weight:700;color:var(--primary)
     }
 
-    /* ===== LABS ===== */
+    /* ===== LABS ===== 
     .lab-card img{
       border-radius:12px;
       border:2px solid #e6e6e6;
-    }
+    }*/
+
+    /* ===== ESTILOS PARA TABS DE LABORATORIOS ===== */
+#labTabs .nav-link {
+  color: var(--primary); /* Morado intenso */
+  border-radius: 50px; /* Bordes redondeados tipo píldora */
+  padding: 0.5rem 1.5rem;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#labTabs .nav-link:hover {
+  background-color: rgba(51, 21, 122, 0.1); /* Efecto hover suave */
+}
+
+#labTabs .nav-link.active {
+  background-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(51, 21, 122, 0.3);
+}
+
+.table th {
+    color: var(--primary);
+    font-weight: 700;
+}
+.table td.hora-col {
+    font-weight: 600;
+    color: var(--accent); /* Rosa/Fucsia para destacar la hora */
+    white-space: nowrap;
+}
 
     /* ===== PERSONAS ===== */
     .person-card {
@@ -184,7 +213,7 @@
 <header class="hero" id="inicio">
   <div class="container hero-content">
     <h1 class="mb-3">XX Concurso de Proyectos de Innovación</h1>
-    <p class="lead mb-4">Un espacio académico para mostrar creatividad, tecnología e impacto social.</p>
+    <p class="lead mb-4">Un espacio académico para mostrar creatividad, tecnología e impacto social. 24 NOVIEMBRE 2026</p>
     <a href="#programa" class="btn btn-primary btn-lg">Ver programa</a>
   </div>
 </header>
@@ -350,7 +379,7 @@
       </div>
       <div class="col-md-6">
         <div class="card p-4 h-100">
-          <h4>Vespertino</h4>
+          <h4>Tarde</h4>
           <p><span class="program-time">16:00</span> Exposición de proyectos</p>
           <p><span class="program-time">19:00</span> Coffee Break</p>
           <p><span class="program-time">19:30</span> Entrega Reconocimientos</p>
@@ -361,7 +390,7 @@
   </div>
 </section>
 
-<!-- LABORATORIOS -->
+<!-- LABORATORIOS 
 <section id="labs">
   <div class="container">
     <div class="section-title">
@@ -382,7 +411,7 @@
         </div>
       </div>
     </div>
-      <!-- <div class="col-sm-6 col-lg-4">
+       <div class="col-sm-6 col-lg-4">
         <div class="card lab-card p-3 text-center">
           <img src="assets/img/labs/LTEM.png" class="img-fluid mb-3">
           <h5>Laboratorio LTE</h5>
@@ -419,7 +448,148 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div> 
+</section>-->
+<!-- LABORATORIOS Y PROYECTOS -->
+<section id="labs" class="bg-light">
+  <div class="container">
+    <div class="section-title">
+      <h2>Distribución de Laboratorios y Proyectos</h2>
+      <p>Selecciona un laboratorio para ver el horario y los proyectos asignados.</p>
+    </div>
+
+    <!-- Navegación de Pestañas (Tabs) -->
+    <ul class="nav nav-pills justify-content-center mb-5 gap-2" id="labTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active fw-bold" id="lia-tab" data-bs-toggle="pill" data-bs-target="#lia" type="button" role="tab" aria-controls="lia" aria-selected="true">LIA</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link fw-bold" id="lte-tab" data-bs-toggle="pill" data-bs-target="#lte" type="button" role="tab" aria-controls="lte" aria-selected="false">LTE</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link fw-bold" id="lis-tab" data-bs-toggle="pill" data-bs-target="#lis" type="button" role="tab" aria-controls="lis" aria-selected="false">LIS</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link fw-bold" id="lds-tab" data-bs-toggle="pill" data-bs-target="#lds" type="button" role="tab" aria-controls="lds" aria-selected="false">LDS</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link fw-bold" id="lti-tab" data-bs-toggle="pill" data-bs-target="#lti" type="button" role="tab" aria-controls="lti" aria-selected="false">LTI</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link fw-bold" id="lrd-tab" data-bs-toggle="pill" data-bs-target="#lrd" type="button" role="tab" aria-controls="lrd" aria-selected="false">LRD</button>
+      </li>
+    </ul>
+
+    <!-- Contenedores de cada Laboratorio -->
+    <div class="tab-content" id="labTabsContent">
+      <!-- Los contenedores se llenarán dinámicamente con JavaScript -->
+      
+      <!-- Contenedor LIA (Estará activo por defecto) -->
+      <div class="tab-pane fade show active" id="lia" role="tabpanel" aria-labelledby="lia-tab">
+         <div class="table-responsive shadow-sm rounded bg-white p-3">
+             <table class="table table-hover align-middle mb-0">
+                 <thead class="table-light">
+                     <tr>
+                         <th>Hora</th>
+                         <th>Turno</th>
+                         <th>Nombre del Proyecto</th>
+                         <th>Equipo / Estudiantes</th>
+                     </tr>
+                 </thead>
+                 <tbody id="tabla-lia">
+                     <!-- Filas generadas por JS -->
+                 </tbody>
+             </table>
+         </div>
+      </div>
+
+      <!-- Contenedor LTE -->
+      <div class="tab-pane fade" id="lte" role="tabpanel" aria-labelledby="lte-tab">
+         <div class="table-responsive shadow-sm rounded bg-white p-3">
+             <table class="table table-hover align-middle mb-0">
+                 <thead class="table-light">
+                     <tr>
+                         <th>Hora</th>
+                         <th>Turno</th>
+                         <th>Nombre del Proyecto</th>
+                         <th>Equipo / Estudiantes</th>
+                     </tr>
+                 </thead>
+                 <tbody id="tabla-lte"></tbody>
+             </table>
+         </div>
+      </div>
+      
+      <!-- Contenedor LIS -->
+      <div class="tab-pane fade" id="lis" role="tabpanel" aria-labelledby="lis-tab">
+         <div class="table-responsive shadow-sm rounded bg-white p-3">
+             <table class="table table-hover align-middle mb-0">
+                 <thead class="table-light">
+                     <tr>
+                         <th>Hora</th>
+                         <th>Turno</th>
+                         <th>Nombre del Proyecto</th>
+                         <th>Equipo / Estudiantes</th>
+                     </tr>
+                 </thead>
+                 <tbody id="tabla-lis"></tbody>
+             </table>
+         </div>
+      </div>
+
+       <!-- Contenedor LDS -->
+       <div class="tab-pane fade" id="lds" role="tabpanel" aria-labelledby="lds-tab">
+         <div class="table-responsive shadow-sm rounded bg-white p-3">
+             <table class="table table-hover align-middle mb-0">
+                 <thead class="table-light">
+                     <tr>
+                         <th>Hora</th>
+                         <th>Turno</th>
+                         <th>Nombre del Proyecto</th>
+                         <th>Equipo / Estudiantes</th>
+                     </tr>
+                 </thead>
+                 <tbody id="tabla-lds"></tbody>
+             </table>
+         </div>
+      </div>
+
+       <!-- Contenedor LTI -->
+       <div class="tab-pane fade" id="lti" role="tabpanel" aria-labelledby="lti-tab">
+         <div class="table-responsive shadow-sm rounded bg-white p-3">
+             <table class="table table-hover align-middle mb-0">
+                 <thead class="table-light">
+                     <tr>
+                         <th>Hora</th>
+                         <th>Turno</th>
+                         <th>Nombre del Proyecto</th>
+                         <th>Equipo / Estudiantes</th>
+                     </tr>
+                 </thead>
+                 <tbody id="tabla-lti"></tbody>
+             </table>
+         </div>
+      </div>
+
+       <!-- Contenedor LRD -->
+       <div class="tab-pane fade" id="lrd" role="tabpanel" aria-labelledby="lrd-tab">
+         <div class="table-responsive shadow-sm rounded bg-white p-3">
+             <table class="table table-hover align-middle mb-0">
+                 <thead class="table-light">
+                     <tr>
+                         <th>Hora</th>
+                         <th>Turno</th>
+                         <th>Nombre del Proyecto</th>
+                         <th>Equipo / Estudiantes</th>
+                     </tr>
+                 </thead>
+                 <tbody id="tabla-lrd"></tbody>
+             </table>
+         </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <!-- SEDE DEL EVENTO -->
@@ -607,9 +777,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // Establecer la fecha del evento: 25 de noviembre de 2026 a las 09:00:00 AM
+  // Establecer la fecha del evento: 24 de noviembre de 2026 a las 09:00:00 AM
   // Usamos el formato estándar ISO para evitar problemas en navegadores como Safari
-  const eventDate = new Date("2026-11-25T09:00:00").getTime();
+  const eventDate = new Date("2026-11-24T09:00:00").getTime();
 
   // Actualizar la cuenta cada segundo (1000 milisegundos)
   const countdown = setInterval(function() {
@@ -645,6 +815,61 @@
       document.querySelector(".countdown-section h3").innerText = "¡El evento ha comenzado!";
     }
   }, 1000);
+</script>
+
+<script>
+// Cuando tengas tu Excel, lo conviertes a un formato similar a este:
+const proyectosData = {
+    "lia": [
+        { hora: "09:20 - 09:40", turno: "Matutino", nombre: "App de Realidad Aumentada para Anatomía", equipo: "TechMed (Juan P., María C.)" },
+        { hora: "09:40 - 10:00", turno: "Matutino", nombre: "Sistema de Control de Invernaderos (IoT)", equipo: "GreenCode" },
+        { hora: "16:00 - 16:20", turno: "Vespertino", nombre: "Plataforma de Tutorías Estudiantiles", equipo: "EduConnect" }
+    ],
+    "lte": [
+        { hora: "09:20 - 09:40", turno: "Matutino", nombre: "Análisis de Tráfico con Visión Artificial", equipo: "Visionarys" },
+        { hora: "16:20 - 16:40", turno: "Vespertino", nombre: "Videojuego Educativo de Historia de México", equipo: "PixelPioneros" }
+    ],
+    "lis": [], // Vacío por ahora
+    "lds": [
+         { hora: "10:20 - 10:40", turno: "Matutino", nombre: "Dashboard de Finanzas Personales", equipo: "FinTech Team" }
+    ],
+    "lti": [],
+    "lrd": []
+};
+
+// Función para inyectar los datos en el HTML
+function cargarProyectos() {
+    // Recorrer las claves del objeto (lia, lte, lis, etc.)
+    for (const lab in proyectosData) {
+        const tbody = document.getElementById(`tabla-${lab}`);
+        const proyectos = proyectosData[lab];
+
+        // Si el contenedor existe
+        if (tbody) {
+            tbody.innerHTML = ''; // Limpiar contenido previo
+
+            if (proyectos.length === 0) {
+                // Mensaje si no hay proyectos registrados aún
+                tbody.innerHTML = `<tr><td colspan="4" class="text-center text-muted py-4"><em>Aún no hay proyectos asignados a este laboratorio.</em></td></tr>`;
+            } else {
+                // Crear una fila por cada proyecto
+                proyectos.forEach(proyecto => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td class="hora-col">${proyecto.hora}</td>
+                        <td><span class="badge ${proyecto.turno === 'Matutino' ? 'bg-primary' : 'bg-secondary'}">${proyecto.turno}</span></td>
+                        <td class="fw-bold">${proyecto.nombre}</td>
+                        <td>${proyecto.equipo}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+        }
+    }
+}
+
+// Ejecutar la función cuando el documento (DOM) esté listo
+document.addEventListener('DOMContentLoaded', cargarProyectos);
 </script>
 
 <div class="modal fade" id="posterModal" tabindex="-1"
